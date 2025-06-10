@@ -9,7 +9,7 @@ provider "azurerm" {
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-network"
   address_space       = ["10.0.0.0/22"]
-  location            = "${var.prefix}.location"
+  location            = "${var.location}"
   resource_group_name = "Azuredevops"
 }
 
@@ -23,7 +23,7 @@ resource "azurerm_subnet" "internal" {
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
   resource_group_name = "Azuredevops"
-  location            = "${var.prefix}.location"
+  location            = "${var.location}"
 
   ip_configuration {
     name                          = "internal"
@@ -35,7 +35,7 @@ resource "azurerm_network_interface" "main" {
 resource "azurerm_linux_virtual_machine" "main" {
   name                            = "${var.prefix}-vm"
   resource_group_name             = "Azuredevops"
-  location                        = "${var.prefix}.location"
+  location                        = "${var.location}"
   size                            = "Standard_D2s_v3"
   admin_username                  = var.admin_username
   admin_password                  = var.admin_password
