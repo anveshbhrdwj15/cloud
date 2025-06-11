@@ -16,3 +16,8 @@ variable "admin_username" {
 variable "admin_password" {
   description = "The password for the VM being created."
 }
+
+variable "resource_group" {
+  description = "resourcegroup"
+  default = "AzureDevops"
+}

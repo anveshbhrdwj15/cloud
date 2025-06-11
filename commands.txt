@@ -1,0 +1,17 @@
+    
+### to assign policy to subscription ###
+    az policy assignment create \
+        --name tagging-policy-assignment \
+        --display-name <your_policy_assignment_display_name> \
+        --scope /subscriptions/<your_subscription_id> \
+        --policy tagging-policy
+
+
+### screenshot policy assignment list ###
+az policy assignment list
+
+
+    "client_id": "",
+    "client_secret": "",
+    "subscription_id": ""
+
