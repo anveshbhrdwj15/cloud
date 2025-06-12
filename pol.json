@@ -1,0 +1,20 @@
+{
+    "policyRule": {
+        "if": {
+            "allof": [
+                {
+                    "field": "type",
+                    "equals": "Microsoft.Compute/VirtualMachines"
+                },
+                {
+                    "value": "[indexOf(string(field('tags')), '\"\"')]",
+                    "Equals": 0
+                }
+            ]
+        },
+        "then": {
+            "effect": "deny"            
+        }
+        
+    }
+}

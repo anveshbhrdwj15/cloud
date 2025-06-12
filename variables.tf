@@ -11,10 +11,12 @@ variable "location" {
 
 variable "admin_username" {
   description = "The admin username for the VM being created."
+  default = "Anvesh"
 }
 
 variable "admin_password" {
   description = "The password for the VM being created."
+  default = "Anvesh"
 }
 
 variable "resource_group" {
@@ -25,3 +27,8 @@ variable "resource_group" {
 variable "packer_image_name" {
   description = "Name of the Packer image"
   default     = "myPackerImage"
+}
+variable "vm_count" {
+  description = "No. of vms to deploy"
+  default     = "1"
+}

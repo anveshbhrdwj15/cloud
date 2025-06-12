@@ -110,7 +110,8 @@ data "azurerm_image" "packer-image" {
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
-  name                            = "${var.prefix}-vm"
+  count                           = "${var.vm_count}"
+  name                            = "${var.prefix}-vm-${count.index}"
   resource_group_name             = "${var.resource_group}"
   location                        = "${var.location}"
   size                            = "Standard_D2s_v3"
@@ -118,18 +119,23 @@ resource "azurerm_linux_virtual_machine" "main" {
   admin_password                  = var.admin_password
   disable_password_authentication = false
   network_interface_ids = [
-    azurerm_network_interface.main.id,
+    azurerm_network_interface.main[count.index].id,
   ]
 
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
-    version   = "latest"
-  }
-
+storage_image_reference {
+    id= data.azurerm_image.packer-image.id
+}
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
   }
+  
+  resource "azurerm_managed_disk" "source" {
+  name                 = "${var.prefix}-md1"
+  location             = "${var.location}"
+  resource_group_name  = "${var.resource_group}"
+  storage_account_type = "Standard_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = "1"
+    }
 }
