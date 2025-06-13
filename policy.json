@@ -1,39 +1,28 @@
 {
-   
-    "parameters" : {
-        "tags": {
-        "type": "String",
-        "metadata": {
-          "displayName": "Tags",
-          "description": "Name of the tag, such as 'environment'"
-        }
-      }
-    
-    }, 
-    
-     "properties": {
-            "displayName": "Tagging policy for vms",
-            "description": "deny creating resources if tags are not present",
-            "mode": "All"
-        },
-
-
-    "policyRule" : {
-        "if":{
-            "allof":[
+    "policyRule": {
+        "if": {
+            "allOf": [
                 {
                     "field": "type",
                     "equals": "Microsoft.Compute/virtualMachines"
                 },
                 {
-                    "value": "[indexOf(string(field('tags')), '\"\"')]",
-                    "Equals": 0
+                    "field": "[concat('tags[', parameters('tagName'), ']')]",
+                    "exists": "false"
                 }
             ]
         },
-        "then" : {
-            "effect" : "deny"
+        "then": {
+            "effect": "deny"
+        }
+    },
+    "parameters": {
+        "tagName": {
+            "type": "String",
+            "metadata": {
+                "displayName": "Tag Name",
+                "description": "The name of the tag that must be present."
+            }
         }
     }
 }
-
