@@ -1,9 +1,22 @@
 {
-    "properties": {
+   
+    "parameters" : {
+        "tags": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Tags",
+          "description": "Name of the tag, such as 'environment'"
+        }
+      }
+    
+    }, 
+    
+     "properties": {
             "displayName": "Tagging policy for vms",
             "description": "deny creating resources if tags are not present",
             "mode": "All"
         },
+
 
     "policyRule" : {
         "if":{
