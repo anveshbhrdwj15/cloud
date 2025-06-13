@@ -15,28 +15,6 @@ az policy assignment create \
 az policy assignment list
 
 
-    "client_id": "",
-    "client_secret": "",
-    "subscription_id": ""
-    
-      source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
-    version   = "latest"
-  }
+ Packer build packer.json
 
-
-
-    "parameters" : {
-        "name" : "tagging-policy"
-    },
-
-    "properties" : {
-            "mode" : "indexed",
-            "displayname" : "tagging-policy",
-            "description" : "check if tags are present on vms"
-        },
-    
-
-/Users/anveshbharadwaj/Documents/azure/cloud/
+Az image list

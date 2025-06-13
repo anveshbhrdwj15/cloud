@@ -1,4 +1,4 @@
-client_id = "66b2e653-7716-4e80-8af0-e2a031b46f6a"
-client_secret = "tJk8Q~XQwjNlTuFX.pHKzpgFrV0-Hz0U952~CaZH"
+client_id = "c5fd7add-e5a9-4ce4-8e82-5f6b2558ab71"
+client_secret = "yGT8Q~97lfP2RNDFkjWQL16vmPxCg1ZKa5-W4bkr"
 subscription_id = "e7a256dc-769a-421c-9f8e-e283ed3cbefa"
 resource_group =  "Azuredevops"
