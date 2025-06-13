@@ -1,15 +1,11 @@
 {
-    "parameters":{
-        "type" : "Microsoft.Authorization/policyDefinition",
-        "name" : "tagging-policy",
-        "properties" : {
-            "mode" : "indexed",
-            "displayname" : "tagging-policy",
-            "description" : "check if tags are present on vms"
-        }
-    },
+    "properties": {
+            "displayName": "Tagging policy for vms",
+            "description": "deny creating resources if tags are not present",
+            "mode": "All"
+        },
 
-    "policyrule" : {
+    "policyRule" : {
         "if":{
             "allof":[
                 {
@@ -17,8 +13,8 @@
                     "equals": "Microsoft.Compute/virtualMachines"
                 },
                 {
-                    "field": "tags.Environment",
-                    "exists": "True"
+                    "value": "[indexOf(string(field('tags')), '\"\"')]",
+                    "Equals": 0
                 }
             ]
         },
