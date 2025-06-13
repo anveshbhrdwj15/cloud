@@ -1,0 +1,40 @@
+{
+    "properties": {
+     "displayName": "Require a tag on vm",
+     "policyType": "custom",
+     "mode": "All",
+     "description": "Enforces existence of a tag on vms.",
+     "metadata": {
+      "version": "1.0.0",
+      "category": "Tags"
+      },
+     "version": "1.0.0",
+     "parameters": {
+       "tagName": {
+         "type": "String",
+         "metadata": {
+          "displayName": "Tag Name",
+          "description": "Name of the tag, such as 'environment'"
+        }
+      }
+    }
+},
+
+"policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "exists": "false"
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+}
