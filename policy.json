@@ -1,28 +1,20 @@
 {
     "policyRule": {
-        "if": {
-            "allOf": [
-                {
-                    "field": "type",
-                    "equals": "Microsoft.Compute/virtualMachines"
-                },
-                {
-                    "field": "[concat('tags[', parameters('tagName'), ']')]",
-                    "exists": "false"
-                }
-            ]
-        },
-        "then": {
-            "effect": "deny"
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Compute/virtualMachines"
+          },
+          {
+            "value": "[indexOf(string(field('tags')), '\"\"')]",
+            "Equals": 0
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
         }
     },
-    "parameters": {
-        "tagName": {
-            "type": "String",
-            "metadata": {
-                "displayName": "Tag Name",
-                "description": "The name of the tag that must be present."
-            }
-        }
-    }
+    "parameters": {}
 }
