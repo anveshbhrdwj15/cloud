@@ -4,10 +4,10 @@
 4) az account set --subscription "ad6befd3-6a77-4714-b24d-181b38cb2753"
 5)terraform init
 6)terraform plan -out solution.plan
-7)terraform apply
+7)terraform apply "solution.plan" 
 8)terraform delete
 
 
-ManagedImageId: /subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
+/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
 
 ad6befd3-6a77-4714-b24d-181b38cb2753

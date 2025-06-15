@@ -1,29 +1,4 @@
-Last login: Sun Jun 15 10:51:14 on ttys000
-anveshbharadwaj@Mac ~ % az login
-A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
-
-Retrieving tenants and subscriptions for the selection...
-
-[Tenant and subscription selection]
-
-No     Subscription name    Subscription ID                       Tenant
------  -------------------  ------------------------------------  ------------
-[1] *  UdacityDS - 65       ad6befd3-6a77-4714-b24d-181b38cb2753  Udacity - DS
-
-The default is marked with an *; the default tenant is 'Udacity - DS' and subscription is 'UdacityDS - 65' (ad6befd3-6a77-4714-b24d-181b38cb2753).
-
-Select a subscription and tenant (Type a number or Enter for no changes): 
-
-Tenant: Udacity - DS
-Subscription: UdacityDS - 65 (ad6befd3-6a77-4714-b24d-181b38cb2753)
-
-[Announcements]
-With the new Azure CLI login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236
-
-If you encounter any problem, please open an issue at https://aka.ms/azclibug
-
-[Warning] The login output has been updated. Please be aware that it no longer displays the full list of available subscriptions by default.
-
+Last login: Sun Jun 15 12:08:58 on ttys000
 anveshbharadwaj@Mac ~ % cd /Users/anveshbharadwaj/Documents/azure/cloud
 anveshbharadwaj@Mac cloud % packer build -var-file=packervar.json server.json
 azure-arm: output will be in this color.
@@ -34,40 +9,40 @@ azure-arm: output will be in this color.
 ==> azure-arm: Getting source image id for the deployment ...
 ==> azure-arm:  -> SourceImageName: '/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/providers/Microsoft.Compute/locations/East US/publishers/Canonical/ArtifactTypes/vmimage/offers/0001-com-ubuntu-server-jammy/skus/22_04-lts/versions/latest'
 ==> azure-arm: Creating resource group ...
-==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
+==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
 ==> azure-arm:  -> Location          : 'East US'
 ==> azure-arm:  -> Tags              :
 ==> azure-arm:  ->> Project : Udacity-deployment-project
 ==> azure-arm: Validating deployment template ...
-==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> DeploymentName    : 'pkrdpfrnl46483g'
+==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> DeploymentName    : 'pkrdpm9i6fxx840'
 ==> azure-arm: Deploying deployment template ...
-==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> DeploymentName    : 'pkrdpfrnl46483g'
+==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> DeploymentName    : 'pkrdpm9i6fxx840'
 ==> azure-arm: Getting the VM's IP address ...
-==> azure-arm:  -> ResourceGroupName   : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> PublicIPAddressName : 'pkripfrnl46483g'
-==> azure-arm:  -> NicName             : 'pkrnifrnl46483g'
+==> azure-arm:  -> ResourceGroupName   : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> PublicIPAddressName : 'pkripm9i6fxx840'
+==> azure-arm:  -> NicName             : 'pkrnim9i6fxx840'
 ==> azure-arm:  -> Network Connection  : 'PublicEndpoint'
-==> azure-arm:  -> IP Address          : '172.172.151.208'
+==> azure-arm:  -> IP Address          : '172.190.251.210'
 ==> azure-arm: Waiting for SSH to become available...
 ==> azure-arm: Connected to SSH!
-==> azure-arm: Provisioning with shell script: /var/folders/6c/wlj26bg54j91pzz88012d9300000gn/T/packer-shell3921744857
+==> azure-arm: Provisioning with shell script: /var/folders/6c/wlj26bg54j91pzz88012d9300000gn/T/packer-shell2169347038
 ==> azure-arm: + echo Hello, World!
 ==> azure-arm: + nohup busybox httpd -f -p 80
 ==> azure-arm: httpd: bind: Permission denied
 ==> azure-arm: Querying the machine's properties ...
-==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> ComputeName       : 'pkrvmfrnl46483g'
-==> azure-arm:  -> Managed OS Disk   : '/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/pkr-Resource-Group-frnl46483g/providers/Microsoft.Compute/disks/pkrosfrnl46483g'
+==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> ComputeName       : 'pkrvmm9i6fxx840'
+==> azure-arm:  -> Managed OS Disk   : '/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/pkr-Resource-Group-m9i6fxx840/providers/Microsoft.Compute/disks/pkrosm9i6fxx840'
 ==> azure-arm: Querying the machine's additional disks properties ...
-==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> ComputeName       : 'pkrvmfrnl46483g'
+==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> ComputeName       : 'pkrvmm9i6fxx840'
 ==> azure-arm: Powering off machine ...
-==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> ComputeName       : 'pkrvmfrnl46483g'
-==> azure-arm:  -> Compute ResourceGroupName : 'pkr-Resource-Group-frnl46483g'
-==> azure-arm:  -> Compute Name              : 'pkrvmfrnl46483g'
+==> azure-arm:  -> ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> ComputeName       : 'pkrvmm9i6fxx840'
+==> azure-arm:  -> Compute ResourceGroupName : 'pkr-Resource-Group-m9i6fxx840'
+==> azure-arm:  -> Compute Name              : 'pkrvmm9i6fxx840'
 ==> azure-arm:  -> Compute Location          : 'East US'
 ==> azure-arm: Generalizing machine ...
 ==> azure-arm: Capturing image ...
@@ -76,19 +51,19 @@ azure-arm: output will be in this color.
 ==> azure-arm:  -> Image Location            : 'East US'
 ==> azure-arm: 
 ==> azure-arm: Deleting Virtual Machine deployment and its attached resources...
-==> azure-arm: Deleted -> pkrvmfrnl46483g : 'Microsoft.Compute/virtualMachines'
-==> azure-arm: Deleted -> pkrnifrnl46483g : 'Microsoft.Network/networkInterfaces'
-==> azure-arm: Deleted -> pkripfrnl46483g : 'Microsoft.Network/publicIPAddresses'
-==> azure-arm: Deleted -> pkrvnfrnl46483g : 'Microsoft.Network/virtualNetworks'
-==> azure-arm: Deleted -> pkrsgfrnl46483g : 'Microsoft.Network/networkSecurityGroups'
-==> azure-arm: Deleted -> Microsoft.Compute/disks : '/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/pkr-Resource-Group-frnl46483g/providers/Microsoft.Compute/disks/pkrosfrnl46483g'
-==> azure-arm: Removing the created Deployment object: 'pkrdpfrnl46483g'
+==> azure-arm: Deleted -> pkrvmm9i6fxx840 : 'Microsoft.Compute/virtualMachines'
+==> azure-arm: Deleted -> pkrnim9i6fxx840 : 'Microsoft.Network/networkInterfaces'
+==> azure-arm: Deleted -> pkrvnm9i6fxx840 : 'Microsoft.Network/virtualNetworks'
+==> azure-arm: Deleted -> pkripm9i6fxx840 : 'Microsoft.Network/publicIPAddresses'
+==> azure-arm: Deleted -> pkrsgm9i6fxx840 : 'Microsoft.Network/networkSecurityGroups'
+==> azure-arm: Deleted -> Microsoft.Compute/disks : '/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/pkr-Resource-Group-m9i6fxx840/providers/Microsoft.Compute/disks/pkrosm9i6fxx840'
+==> azure-arm: Removing the created Deployment object: 'pkrdpm9i6fxx840'
 ==> azure-arm: 
 ==> azure-arm: Cleanup requested, deleting resource group ...
 ==> azure-arm: Resource group has been deleted.
-Build 'azure-arm' finished after 2 minutes 52 seconds.
+Build 'azure-arm' finished after 3 minutes 24 seconds.
 
-==> Wait completed after 2 minutes 52 seconds
+==> Wait completed after 3 minutes 24 seconds
 
 ==> Builds finished. The artifacts of successful builds are:
 --> azure-arm: Azure.ResourceManagement.VMImage:
@@ -99,8 +74,7 @@ ManagedImageName: AnveshprojectImage
 ManagedImageId: /subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
 ManagedImageLocation: East US
 
-anveshbharadwaj@Mac cloud % 
-anveshbharadwaj@Mac cloud % terraform init
+anveshbharadwaj@Mac cloud % terraform init                                   
 Initializing the backend...
 Initializing provider plugins...
 - Reusing previous version of hashicorp/azurerm from the dependency lock file
@@ -115,7 +89,7 @@ should now work.
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
-anveshbharadwaj@Mac cloud % terraform plan
+anveshbharadwaj@Mac cloud % terraform plan                                   
 var.location
   The Azure Region in which all resources in this example should be created.
 
@@ -124,7 +98,7 @@ var.location
 var.prefix
   The prefix which should be used for all resources in this example
 
-  Enter a value: UdacityProject-Anvesh
+  Enter a value: UdacityProject
 
 var.source_image_id
   The Image ID that was produced from Packer build.
@@ -136,21 +110,62 @@ var.subscription_id
 
   Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
 
-data.azurerm_image.packer-image: Reading...
-data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+╷
+│ Error: expected security_rule.0.direction to be one of ["Inbound" "Outbound"], got *
+│ 
+│   with azurerm_network_security_group.project_NSG,
+│   on main.tf line 20, in resource "azurerm_network_security_group" "project_NSG":
+│   20: resource "azurerm_network_security_group" "project_NSG" {
+│ 
+╵
+anveshbharadwaj@Mac cloud % terraform plan
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+var.source_image_id
+  The Image ID that was produced from Packer build.
+
+  Enter a value: /subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
+
+var.subscription_id
+  The Azure subscription_id which all resources will be utilized.
+
+  Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
+
 
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
 symbols:
   + create
+ <= read (data resources)
 
 Terraform will perform the following actions:
+
+  # data.azurerm_image.packer-image will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_image" "packer-image" {
+      + data_disk           = (known after apply)
+      + id                  = (known after apply)
+      + location            = (known after apply)
+      + name                = "AnveshprojectImage"
+      + os_disk             = (known after apply)
+      + resource_group_name = "AzureDevops"
+      + tags                = (known after apply)
+      + zone_resilient      = (known after apply)
+    }
 
   # azurerm_availability_set.availability_set will be created
   + resource "azurerm_availability_set" "availability_set" {
       + id                           = (known after apply)
       + location                     = "eastus"
       + managed                      = true
-      + name                         = "UdacityProject-Anvesh-aset"
+      + name                         = "Udacity-aset"
       + platform_fault_domain_count  = 3
       + platform_update_domain_count = 5
       + resource_group_name          = "AzureDevops"
@@ -163,7 +178,7 @@ Terraform will perform the following actions:
   + resource "azurerm_lb" "load_balancer" {
       + id                   = (known after apply)
       + location             = "eastus"
-      + name                 = "UdacityProject-Anvesh-lb"
+      + name                 = "Udacity-lb"
       + private_ip_address   = (known after apply)
       + private_ip_addresses = (known after apply)
       + resource_group_name  = "AzureDevops"
@@ -196,8 +211,39 @@ Terraform will perform the following actions:
       + inbound_nat_rules         = (known after apply)
       + load_balancing_rules      = (known after apply)
       + loadbalancer_id           = (known after apply)
-      + name                      = "UdacityProject-Anvesh-bknd-address-pool-lb"
+      + name                      = "Udacity-bknd-address-pool-lb"
       + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_lb_probe.lb_probe will be created
+  + resource "azurerm_lb_probe" "lb_probe" {
+      + id                  = (known after apply)
+      + interval_in_seconds = 15
+      + load_balancer_rules = (known after apply)
+      + loadbalancer_id     = (known after apply)
+      + name                = "test-probe"
+      + number_of_probes    = 2
+      + port                = 80
+      + probe_threshold     = 1
+      + protocol            = "Tcp"
+    }
+
+  # azurerm_lb_rule.lb_NSG will be created
+  + resource "azurerm_lb_rule" "lb_NSG" {
+      + backend_address_pool_ids       = (known after apply)
+      + backend_port                   = 80
+      + disable_outbound_snat          = true
+      + enable_floating_ip             = false
+      + frontend_ip_configuration_id   = (known after apply)
+      + frontend_ip_configuration_name = "primary"
+      + frontend_port                  = 80
+      + id                             = (known after apply)
+      + idle_timeout_in_minutes        = 4
+      + load_distribution              = "Default"
+      + loadbalancer_id                = (known after apply)
+      + name                           = "HTTP-lb-vms"
+      + probe_id                       = (known after apply)
+      + protocol                       = "Tcp"
     }
 
   # azurerm_linux_virtual_machine.main[0] will be created
@@ -213,7 +259,7 @@ Terraform will perform the following actions:
       + id                                                     = (known after apply)
       + location                                               = "eastus"
       + max_bid_price                                          = -1
-      + name                                                   = "UdacityProject-Anvesh-vm-0"
+      + name                                                   = "Udacity-vm-0"
       + network_interface_ids                                  = (known after apply)
       + patch_assessment_mode                                  = "ImageDefault"
       + patch_mode                                             = "ImageDefault"
@@ -258,7 +304,7 @@ Terraform will perform the following actions:
       + id                                                     = (known after apply)
       + location                                               = "eastus"
       + max_bid_price                                          = -1
-      + name                                                   = "UdacityProject-Anvesh-vm-1"
+      + name                                                   = "Udacity-vm-1"
       + network_interface_ids                                  = (known after apply)
       + patch_assessment_mode                                  = "ImageDefault"
       + patch_mode                                             = "ImageDefault"
@@ -302,7 +348,7 @@ Terraform will perform the following actions:
       + location                          = "eastus"
       + logical_sector_size               = (known after apply)
       + max_shares                        = (known after apply)
-      + name                              = "UdacityProject-Anvesh-md1-0"
+      + name                              = "Udacity-md1-0"
       + network_access_policy             = "AllowAll"
       + optimized_frequent_attach_enabled = false
       + performance_plus_enabled          = false
@@ -328,7 +374,7 @@ Terraform will perform the following actions:
       + location                          = "eastus"
       + logical_sector_size               = (known after apply)
       + max_shares                        = (known after apply)
-      + name                              = "UdacityProject-Anvesh-md1-1"
+      + name                              = "Udacity-md1-1"
       + network_access_policy             = "AllowAll"
       + optimized_frequent_attach_enabled = false
       + performance_plus_enabled          = false
@@ -351,7 +397,7 @@ Terraform will perform the following actions:
       + ip_forwarding_enabled          = false
       + location                       = "eastus"
       + mac_address                    = (known after apply)
-      + name                           = "UdacityProject-Anvesh-nic-0"
+      + name                           = "Udacity-nic-0"
       + private_ip_address             = (known after apply)
       + private_ip_addresses           = (known after apply)
       + resource_group_name            = "AzureDevops"
@@ -380,7 +426,7 @@ Terraform will perform the following actions:
       + ip_forwarding_enabled          = false
       + location                       = "eastus"
       + mac_address                    = (known after apply)
-      + name                           = "UdacityProject-Anvesh-nic-1"
+      + name                           = "Udacity-nic-1"
       + private_ip_address             = (known after apply)
       + private_ip_addresses           = (known after apply)
       + resource_group_name            = "AzureDevops"
@@ -420,7 +466,7 @@ Terraform will perform the following actions:
   + resource "azurerm_network_security_group" "project_NSG" {
       + id                  = (known after apply)
       + location            = "eastus"
-      + name                = "UdacityProject-Anvesh-NSG"
+      + name                = "Udacity-NSG"
       + resource_group_name = "AzureDevops"
       + security_rule       = [
           + {
@@ -431,8 +477,26 @@ Terraform will perform the following actions:
               + destination_port_range                     = "*"
               + destination_port_ranges                    = []
               + direction                                  = "Inbound"
-              + name                                       = "allow-subnet-traffic"
-              + priority                                   = 100
+              + name                                       = "allow-subnet-traffic_inbound"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Outbound"
+              + name                                       = "allow-subnet-traffic_outbound"
+              + priority                                   = 120
               + protocol                                   = "*"
               + source_address_prefix                      = "VirtualNetwork"
               + source_address_prefixes                    = []
@@ -450,7 +514,7 @@ Terraform will perform the following actions:
               + destination_port_ranges                    = []
               + direction                                  = "Inbound"
               + name                                       = "deny-access-from-internet"
-              + priority                                   = 120
+              + priority                                   = 100
               + protocol                                   = "*"
               + source_address_prefix                      = "Internet"
               + source_address_prefixes                    = []
@@ -481,6 +545,13 @@ Terraform will perform the following actions:
       + sku_tier                = "Regional"
     }
 
+  # azurerm_resource_group.RG will be created
+  + resource "azurerm_resource_group" "RG" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "AzureDevops"
+    }
+
   # azurerm_subnet.internal will be created
   + resource "azurerm_subnet" "internal" {
       + address_prefixes                              = [
@@ -492,7 +563,7 @@ Terraform will perform the following actions:
       + private_endpoint_network_policies             = "Disabled"
       + private_link_service_network_policies_enabled = true
       + resource_group_name                           = "AzureDevops"
-      + virtual_network_name                          = "UdacityProject-Anvesh-network"
+      + virtual_network_name                          = "Udacity-network"
     }
 
   # azurerm_subnet_network_security_group_association.assn will be created
@@ -533,7 +604,7 @@ Terraform will perform the following actions:
       + guid                           = (known after apply)
       + id                             = (known after apply)
       + location                       = "eastus"
-      + name                           = "UdacityProject-Anvesh-network"
+      + name                           = "Udacity-network"
       + private_endpoint_vnet_policies = "Disabled"
       + resource_group_name            = "AzureDevops"
       + subnet                         = (known after apply)
@@ -542,7 +613,7 @@ Terraform will perform the following actions:
         }
     }
 
-Plan: 18 to add, 0 to change, 0 to destroy.
+Plan: 21 to add, 0 to change, 0 to destroy.
 
 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -570,14 +641,25 @@ var.subscription_id
   Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
 
 
-data.azurerm_image.packer-image: Reading...
-data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
-
 Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
 symbols:
   + create
+ <= read (data resources)
 
 Terraform will perform the following actions:
+
+  # data.azurerm_image.packer-image will be read during apply
+  # (depends on a resource or a module with changes pending)
+ <= data "azurerm_image" "packer-image" {
+      + data_disk           = (known after apply)
+      + id                  = (known after apply)
+      + location            = (known after apply)
+      + name                = "AnveshprojectImage"
+      + os_disk             = (known after apply)
+      + resource_group_name = "AzureDevops"
+      + tags                = (known after apply)
+      + zone_resilient      = (known after apply)
+    }
 
   # azurerm_availability_set.availability_set will be created
   + resource "azurerm_availability_set" "availability_set" {
@@ -632,6 +714,37 @@ Terraform will perform the following actions:
       + loadbalancer_id           = (known after apply)
       + name                      = "UdacityProject-Anvesh-bknd-address-pool-lb"
       + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_lb_probe.lb_probe will be created
+  + resource "azurerm_lb_probe" "lb_probe" {
+      + id                  = (known after apply)
+      + interval_in_seconds = 15
+      + load_balancer_rules = (known after apply)
+      + loadbalancer_id     = (known after apply)
+      + name                = "test-probe"
+      + number_of_probes    = 2
+      + port                = 80
+      + probe_threshold     = 1
+      + protocol            = "Tcp"
+    }
+
+  # azurerm_lb_rule.lb_NSG will be created
+  + resource "azurerm_lb_rule" "lb_NSG" {
+      + backend_address_pool_ids       = (known after apply)
+      + backend_port                   = 80
+      + disable_outbound_snat          = true
+      + enable_floating_ip             = false
+      + frontend_ip_configuration_id   = (known after apply)
+      + frontend_ip_configuration_name = "primary"
+      + frontend_port                  = 80
+      + id                             = (known after apply)
+      + idle_timeout_in_minutes        = 4
+      + load_distribution              = "Default"
+      + loadbalancer_id                = (known after apply)
+      + name                           = "HTTP-lb-vms"
+      + probe_id                       = (known after apply)
+      + protocol                       = "Tcp"
     }
 
   # azurerm_linux_virtual_machine.main[0] will be created
@@ -865,8 +978,26 @@ Terraform will perform the following actions:
               + destination_port_range                     = "*"
               + destination_port_ranges                    = []
               + direction                                  = "Inbound"
-              + name                                       = "allow-subnet-traffic"
-              + priority                                   = 100
+              + name                                       = "allow-subnet-traffic_inbound"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Outbound"
+              + name                                       = "allow-subnet-traffic_outbound"
+              + priority                                   = 120
               + protocol                                   = "*"
               + source_address_prefix                      = "VirtualNetwork"
               + source_address_prefixes                    = []
@@ -884,7 +1015,7 @@ Terraform will perform the following actions:
               + destination_port_ranges                    = []
               + direction                                  = "Inbound"
               + name                                       = "deny-access-from-internet"
-              + priority                                   = 120
+              + priority                                   = 100
               + protocol                                   = "*"
               + source_address_prefix                      = "Internet"
               + source_address_prefixes                    = []
@@ -913,6 +1044,13 @@ Terraform will perform the following actions:
       + resource_group_name     = "AzureDevops"
       + sku                     = "Standard"
       + sku_tier                = "Regional"
+    }
+
+  # azurerm_resource_group.RG will be created
+  + resource "azurerm_resource_group" "RG" {
+      + id       = (known after apply)
+      + location = "eastus"
+      + name     = "AzureDevops"
     }
 
   # azurerm_subnet.internal will be created
@@ -976,7 +1114,7 @@ Terraform will perform the following actions:
         }
     }
 
-Plan: 18 to add, 0 to change, 0 to destroy.
+Plan: 21 to add, 0 to change, 0 to destroy.
 
 ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
@@ -984,14 +1122,613 @@ Saved the plan to: solution.plan
 
 To perform exactly these actions, run the following command to apply:
     terraform apply "solution.plan"
-anveshbharadwaj@Mac cloud % 
-anveshbharadwaj@Mac cloud % terraform build                  
-Terraform has no command named "build".
+anveshbharadwaj@Mac cloud % terraform apply "solution.plan"      
+azurerm_resource_group.RG: Creating...
+╷
+│ Error: A resource with the ID "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops" already exists - to be managed via Terraform this resource needs to be imported into the State. Please see the resource documentation for "azurerm_resource_group" for more information.
+│ 
+│   with azurerm_resource_group.RG,
+│   on main.tf line 5, in resource "azurerm_resource_group" "RG":
+│    5: resource "azurerm_resource_group" "RG" {
+│ 
+╵
+anveshbharadwaj@Mac cloud % terraform apply "solution.plan"
+╷
+│ Error: Saved plan is stale
+│ 
+│ The given plan file can no longer be applied because the state was changed by another operation after the plan was created.
+╵
+anveshbharadwaj@Mac cloud % terraform plan -out solution.plan
+var.location
+  The Azure Region in which all resources in this example should be created.
 
-To see all of Terraform's top-level commands, run:
-  terraform -help
+  Enter a value: eastus
 
-anveshbharadwaj@Mac cloud % terraform apply
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+var.source_image_id
+  The Image ID that was produced from Packer build.
+
+  Enter a value: /subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
+
+var.subscription_id
+  The Azure subscription_id which all resources will be utilized.
+
+  Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
+
+╷
+│ Error: Value for unconfigurable attribute
+│ 
+│   with data.azurerm_resource_group.RG,
+│   on main.tf line 7, in data "azurerm_resource_group" "RG":
+│    7:   location = "East US"
+│ 
+│ Can't configure a value for "location": its value will be decided automatically based on the result of applying this configuration.
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on main.tf line 15, in resource "azurerm_virtual_network" "main":
+│   15:   resource_group_name = azurerm_resource_group.RG.name
+│ 
+│ A managed resource "azurerm_resource_group" "RG" has not been declared in the root module.
+│ 
+│ Did you mean the data resource data.azurerm_resource_group.RG?
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on main.tf line 23, in resource "azurerm_network_security_group" "project_NSG":
+│   23:   resource_group_name = azurerm_resource_group.RG.name
+│ 
+│ A managed resource "azurerm_resource_group" "RG" has not been declared in the root module.
+│ 
+│ Did you mean the data resource data.azurerm_resource_group.RG?
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on main.tf line 94, in resource "azurerm_public_ip" "public_ip":
+│   94:   resource_group_name = azurerm_resource_group.RG.name
+│ 
+│ A managed resource "azurerm_resource_group" "RG" has not been declared in the root module.
+│ 
+│ Did you mean the data resource data.azurerm_resource_group.RG?
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on main.tf line 128, in resource "azurerm_availability_set" "availability_set":
+│  128:   resource_group_name = azurerm_resource_group.RG.name
+│ 
+│ A managed resource "azurerm_resource_group" "RG" has not been declared in the root module.
+│ 
+│ Did you mean the data resource data.azurerm_resource_group.RG?
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on main.tf line 151, in data "azurerm_image" "packer-image":
+│  151:   resource_group_name = azurerm_resource_group.RG.name
+│ 
+│ A managed resource "azurerm_resource_group" "RG" has not been declared in the root module.
+│ 
+│ Did you mean the data resource data.azurerm_resource_group.RG?
+╵
+╷
+│ Error: Reference to undeclared resource
+│ 
+│   on main.tf line 179, in resource "azurerm_managed_disk" "md1":
+│  179:   resource_group_name  = azurerm_resource_group.RG.name
+│ 
+│ A managed resource "azurerm_resource_group" "RG" has not been declared in the root module.
+│ 
+│ Did you mean the data resource data.azurerm_resource_group.RG?
+╵
+anveshbharadwaj@Mac cloud % terraform plan -out solution.plan
+╷
+│ Error: Missing newline after argument
+│ 
+│   on main.tf line 93, in resource "azurerm_public_ip" "public_ip":
+│   93:   resource_group_name = data.azurerm_resource_group.RG.name  allocation_method   = "Static"
+│ 
+│ An argument definition must end with a newline.
+╵
+anveshbharadwaj@Mac cloud % terraform plan                   
+╷
+│ Error: Missing newline after argument
+│ 
+│   on main.tf line 93, in resource "azurerm_public_ip" "public_ip":
+│   93:   resource_group_name = data.azurerm_resource_group.RG.name  allocation_method   = "Static"
+│ 
+│ An argument definition must end with a newline.
+╵
+anveshbharadwaj@Mac cloud % terraform plan
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: UdacityProj
+
+var.source_image_id
+  The Image ID that was produced from Packer build.
+
+  Enter a value: /subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
+
+var.subscription_id
+  The Azure subscription_id which all resources will be utilized.
+
+  Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
+
+data.azurerm_resource_group.RG: Reading...
+data.azurerm_resource_group.RG: Read complete after 1s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops]
+data.azurerm_image.packer-image: Reading...
+data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_availability_set.availability_set will be created
+  + resource "azurerm_availability_set" "availability_set" {
+      + id                           = (known after apply)
+      + location                     = "eastus"
+      + managed                      = true
+      + name                         = "UdacityProj-aset"
+      + platform_fault_domain_count  = 3
+      + platform_update_domain_count = 5
+      + resource_group_name          = "Azuredevops"
+      + tags                         = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_lb.load_balancer will be created
+  + resource "azurerm_lb" "load_balancer" {
+      + id                   = (known after apply)
+      + location             = "eastus"
+      + name                 = "UdacityProj-lb"
+      + private_ip_address   = (known after apply)
+      + private_ip_addresses = (known after apply)
+      + resource_group_name  = "Azuredevops"
+      + sku                  = "Standard"
+      + sku_tier             = "Regional"
+      + tags                 = {
+          + "Project" = "Udacity-deployment-project"
+        }
+
+      + frontend_ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + id                                                 = (known after apply)
+          + inbound_nat_rules                                  = (known after apply)
+          + load_balancer_rules                                = (known after apply)
+          + name                                               = "primary"
+          + outbound_rules                                     = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = (known after apply)
+          + private_ip_address_version                         = (known after apply)
+          + public_ip_address_id                               = (known after apply)
+          + public_ip_prefix_id                                = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_lb_backend_address_pool.bknd_pool will be created
+  + resource "azurerm_lb_backend_address_pool" "bknd_pool" {
+      + backend_ip_configurations = (known after apply)
+      + id                        = (known after apply)
+      + inbound_nat_rules         = (known after apply)
+      + load_balancing_rules      = (known after apply)
+      + loadbalancer_id           = (known after apply)
+      + name                      = "UdacityProj-bknd-address-pool-lb"
+      + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_lb_probe.lb_probe will be created
+  + resource "azurerm_lb_probe" "lb_probe" {
+      + id                  = (known after apply)
+      + interval_in_seconds = 15
+      + load_balancer_rules = (known after apply)
+      + loadbalancer_id     = (known after apply)
+      + name                = "test-probe"
+      + number_of_probes    = 2
+      + port                = 80
+      + probe_threshold     = 1
+      + protocol            = "Tcp"
+    }
+
+  # azurerm_lb_rule.lb_NSG will be created
+  + resource "azurerm_lb_rule" "lb_NSG" {
+      + backend_address_pool_ids       = (known after apply)
+      + backend_port                   = 80
+      + disable_outbound_snat          = true
+      + enable_floating_ip             = false
+      + frontend_ip_configuration_id   = (known after apply)
+      + frontend_ip_configuration_name = "primary"
+      + frontend_port                  = 80
+      + id                             = (known after apply)
+      + idle_timeout_in_minutes        = 4
+      + load_distribution              = "Default"
+      + loadbalancer_id                = (known after apply)
+      + name                           = "HTTP-lb-vms"
+      + probe_id                       = (known after apply)
+      + protocol                       = "Tcp"
+    }
+
+  # azurerm_linux_virtual_machine.main[0] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "UdacityProj-vm-0"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "Azuredevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[1] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "UdacityProj-vm-1"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "Azuredevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_managed_disk.md1[0] will be created
+  + resource "azurerm_managed_disk" "md1" {
+      + create_option                     = "Empty"
+      + disk_iops_read_only               = (known after apply)
+      + disk_iops_read_write              = (known after apply)
+      + disk_mbps_read_only               = (known after apply)
+      + disk_mbps_read_write              = (known after apply)
+      + disk_size_gb                      = 1
+      + id                                = (known after apply)
+      + location                          = "eastus"
+      + logical_sector_size               = (known after apply)
+      + max_shares                        = (known after apply)
+      + name                              = "UdacityProj-md1-0"
+      + network_access_policy             = "AllowAll"
+      + optimized_frequent_attach_enabled = false
+      + performance_plus_enabled          = false
+      + public_network_access_enabled     = true
+      + resource_group_name               = "Azuredevops"
+      + source_uri                        = (known after apply)
+      + storage_account_type              = "Standard_LRS"
+      + tags                              = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+    }
+
+  # azurerm_managed_disk.md1[1] will be created
+  + resource "azurerm_managed_disk" "md1" {
+      + create_option                     = "Empty"
+      + disk_iops_read_only               = (known after apply)
+      + disk_iops_read_write              = (known after apply)
+      + disk_mbps_read_only               = (known after apply)
+      + disk_mbps_read_write              = (known after apply)
+      + disk_size_gb                      = 1
+      + id                                = (known after apply)
+      + location                          = "eastus"
+      + logical_sector_size               = (known after apply)
+      + max_shares                        = (known after apply)
+      + name                              = "UdacityProj-md1-1"
+      + network_access_policy             = "AllowAll"
+      + optimized_frequent_attach_enabled = false
+      + performance_plus_enabled          = false
+      + public_network_access_enabled     = true
+      + resource_group_name               = "Azuredevops"
+      + source_uri                        = (known after apply)
+      + storage_account_type              = "Standard_LRS"
+      + tags                              = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+    }
+
+  # azurerm_network_interface.main[0] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "UdacityProj-nic-0"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "Azuredevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface.main[1] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "UdacityProj-nic-1"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "Azuredevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[0] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[1] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_security_group.project_NSG will be created
+  + resource "azurerm_network_security_group" "project_NSG" {
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "UdacityProj-NSG"
+      + resource_group_name = "Azuredevops"
+      + security_rule       = [
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "allow-subnet-traffic_inbound"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Outbound"
+              + name                                       = "allow-subnet-traffic_outbound"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Deny"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "deny-access-from-internet"
+              + priority                                   = 100
+              + protocol                                   = "*"
+              + source_address_prefix                      = "Internet"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + tags                = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_public_ip.public_ip will be created
+  + resource "azurerm_public_ip" "public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "PublicIPForLB"
+      + resource_group_name     = "Azuredevops"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_subnet.internal will be created
+  + resource "azurerm_subnet" "internal" {
+      + address_prefixes                              = [
+          + "10.0.2.0/24",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "internal"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "Azuredevops"
+      + virtual_network_name                          = "UdacityProj-network"
+    }
+
+  # azurerm_subnet_network_security_group_association.assn will be created
+  + resource "azurerm_subnet_network_security_group_association" "assn" {
+      + id                        = (known after apply)
+      + network_security_group_id = (known after apply)
+      + subnet_id                 = (known after apply)
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[0] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[1] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space                  = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers                    = (known after apply)
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus"
+      + name                           = "UdacityProj-network"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "Azuredevops"
+      + subnet                         = (known after apply)
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+Plan: 20 to add, 0 to change, 0 to destroy.
+
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+anveshbharadwaj@Mac cloud % terraform plan -out solution.plan
 var.location
   The Azure Region in which all resources in this example should be created.
 
@@ -1012,11 +1749,12 @@ var.subscription_id
 
   Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
 
+data.azurerm_resource_group.RG: Reading...
+data.azurerm_resource_group.RG: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops]
 data.azurerm_image.packer-image: Reading...
-data.azurerm_image.packer-image: Read complete after 1s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage]
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
-symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
 
 Terraform will perform the following actions:
@@ -1029,7 +1767,7 @@ Terraform will perform the following actions:
       + name                         = "UdacityProject-Anvesh-aset"
       + platform_fault_domain_count  = 3
       + platform_update_domain_count = 5
-      + resource_group_name          = "AzureDevops"
+      + resource_group_name          = "Azuredevops"
       + tags                         = {
           + "Project" = "Udacity-deployment-project"
         }
@@ -1042,7 +1780,7 @@ Terraform will perform the following actions:
       + name                 = "UdacityProject-Anvesh-lb"
       + private_ip_address   = (known after apply)
       + private_ip_addresses = (known after apply)
-      + resource_group_name  = "AzureDevops"
+      + resource_group_name  = "Azuredevops"
       + sku                  = "Standard"
       + sku_tier             = "Regional"
       + tags                 = {
@@ -1076,6 +1814,37 @@ Terraform will perform the following actions:
       + outbound_rules            = (known after apply)
     }
 
+  # azurerm_lb_probe.lb_probe will be created
+  + resource "azurerm_lb_probe" "lb_probe" {
+      + id                  = (known after apply)
+      + interval_in_seconds = 15
+      + load_balancer_rules = (known after apply)
+      + loadbalancer_id     = (known after apply)
+      + name                = "test-probe"
+      + number_of_probes    = 2
+      + port                = 80
+      + probe_threshold     = 1
+      + protocol            = "Tcp"
+    }
+
+  # azurerm_lb_rule.lb_NSG will be created
+  + resource "azurerm_lb_rule" "lb_NSG" {
+      + backend_address_pool_ids       = (known after apply)
+      + backend_port                   = 80
+      + disable_outbound_snat          = true
+      + enable_floating_ip             = false
+      + frontend_ip_configuration_id   = (known after apply)
+      + frontend_ip_configuration_name = "primary"
+      + frontend_port                  = 80
+      + id                             = (known after apply)
+      + idle_timeout_in_minutes        = 4
+      + load_distribution              = "Default"
+      + loadbalancer_id                = (known after apply)
+      + name                           = "HTTP-lb-vms"
+      + probe_id                       = (known after apply)
+      + protocol                       = "Tcp"
+    }
+
   # azurerm_linux_virtual_machine.main[0] will be created
   + resource "azurerm_linux_virtual_machine" "main" {
       + admin_password                                         = (sensitive value)
@@ -1100,7 +1869,7 @@ Terraform will perform the following actions:
       + provision_vm_agent                                     = true
       + public_ip_address                                      = (known after apply)
       + public_ip_addresses                                    = (known after apply)
-      + resource_group_name                                    = "AzureDevops"
+      + resource_group_name                                    = "Azuredevops"
       + size                                                   = "Standard_D2s_v3"
       + source_image_id                                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
       + tags                                                   = {
@@ -1145,7 +1914,7 @@ Terraform will perform the following actions:
       + provision_vm_agent                                     = true
       + public_ip_address                                      = (known after apply)
       + public_ip_addresses                                    = (known after apply)
-      + resource_group_name                                    = "AzureDevops"
+      + resource_group_name                                    = "Azuredevops"
       + size                                                   = "Standard_D2s_v3"
       + source_image_id                                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
       + tags                                                   = {
@@ -1183,7 +1952,7 @@ Terraform will perform the following actions:
       + optimized_frequent_attach_enabled = false
       + performance_plus_enabled          = false
       + public_network_access_enabled     = true
-      + resource_group_name               = "AzureDevops"
+      + resource_group_name               = "Azuredevops"
       + source_uri                        = (known after apply)
       + storage_account_type              = "Standard_LRS"
       + tags                              = {
@@ -1209,7 +1978,7 @@ Terraform will perform the following actions:
       + optimized_frequent_attach_enabled = false
       + performance_plus_enabled          = false
       + public_network_access_enabled     = true
-      + resource_group_name               = "AzureDevops"
+      + resource_group_name               = "Azuredevops"
       + source_uri                        = (known after apply)
       + storage_account_type              = "Standard_LRS"
       + tags                              = {
@@ -1230,7 +1999,7 @@ Terraform will perform the following actions:
       + name                           = "UdacityProject-Anvesh-nic-0"
       + private_ip_address             = (known after apply)
       + private_ip_addresses           = (known after apply)
-      + resource_group_name            = "AzureDevops"
+      + resource_group_name            = "Azuredevops"
       + tags                           = {
           + "Project" = "Udacity-deployment-project"
         }
@@ -1259,7 +2028,7 @@ Terraform will perform the following actions:
       + name                           = "UdacityProject-Anvesh-nic-1"
       + private_ip_address             = (known after apply)
       + private_ip_addresses           = (known after apply)
-      + resource_group_name            = "AzureDevops"
+      + resource_group_name            = "Azuredevops"
       + tags                           = {
           + "Project" = "Udacity-deployment-project"
         }
@@ -1297,7 +2066,7 @@ Terraform will perform the following actions:
       + id                  = (known after apply)
       + location            = "eastus"
       + name                = "UdacityProject-Anvesh-NSG"
-      + resource_group_name = "AzureDevops"
+      + resource_group_name = "Azuredevops"
       + security_rule       = [
           + {
               + access                                     = "Allow"
@@ -1307,8 +2076,26 @@ Terraform will perform the following actions:
               + destination_port_range                     = "*"
               + destination_port_ranges                    = []
               + direction                                  = "Inbound"
-              + name                                       = "allow-subnet-traffic"
-              + priority                                   = 100
+              + name                                       = "allow-subnet-traffic_inbound"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Outbound"
+              + name                                       = "allow-subnet-traffic_outbound"
+              + priority                                   = 120
               + protocol                                   = "*"
               + source_address_prefix                      = "VirtualNetwork"
               + source_address_prefixes                    = []
@@ -1326,7 +2113,7 @@ Terraform will perform the following actions:
               + destination_port_ranges                    = []
               + direction                                  = "Inbound"
               + name                                       = "deny-access-from-internet"
-              + priority                                   = 120
+              + priority                                   = 100
               + protocol                                   = "*"
               + source_address_prefix                      = "Internet"
               + source_address_prefixes                    = []
@@ -1352,7 +2139,7 @@ Terraform will perform the following actions:
       + ip_version              = "IPv4"
       + location                = "eastus"
       + name                    = "PublicIPForLB"
-      + resource_group_name     = "AzureDevops"
+      + resource_group_name     = "Azuredevops"
       + sku                     = "Standard"
       + sku_tier                = "Regional"
     }
@@ -1367,7 +2154,7 @@ Terraform will perform the following actions:
       + name                                          = "internal"
       + private_endpoint_network_policies             = "Disabled"
       + private_link_service_network_policies_enabled = true
-      + resource_group_name                           = "AzureDevops"
+      + resource_group_name                           = "Azuredevops"
       + virtual_network_name                          = "UdacityProject-Anvesh-network"
     }
 
@@ -1411,72 +2198,78 @@ Terraform will perform the following actions:
       + location                       = "eastus"
       + name                           = "UdacityProject-Anvesh-network"
       + private_endpoint_vnet_policies = "Disabled"
-      + resource_group_name            = "AzureDevops"
+      + resource_group_name            = "Azuredevops"
       + subnet                         = (known after apply)
       + tags                           = {
           + "Project" = "Udacity-deployment-project"
         }
     }
 
-Plan: 18 to add, 0 to change, 0 to destroy.
+Plan: 20 to add, 0 to change, 0 to destroy.
 
-Do you want to perform these actions?
-  Terraform will perform the actions described above.
-  Only 'yes' will be accepted to approve.
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-  Enter a value: yes
+Saved the plan to: solution.plan
 
+To perform exactly these actions, run the following command to apply:
+    terraform apply "solution.plan"
+anveshbharadwaj@Mac cloud % terraform apply "solution.plan"
 azurerm_availability_set.availability_set: Creating...
 azurerm_virtual_network.main: Creating...
 azurerm_public_ip.public_ip: Creating...
-azurerm_managed_disk.md1[0]: Creating...
 azurerm_managed_disk.md1[1]: Creating...
+azurerm_managed_disk.md1[0]: Creating...
 azurerm_network_security_group.project_NSG: Creating...
-azurerm_availability_set.availability_set: Creation complete after 1s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset]
-azurerm_network_security_group.project_NSG: Creation complete after 3s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG]
-azurerm_public_ip.public_ip: Creation complete after 3s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
+azurerm_availability_set.availability_set: Creation complete after 1s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset]
+azurerm_public_ip.public_ip: Creation complete after 2s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
 azurerm_lb.load_balancer: Creating...
-azurerm_managed_disk.md1[1]: Creation complete after 4s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1]
-azurerm_managed_disk.md1[0]: Creation complete after 4s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0]
-azurerm_virtual_network.main: Creation complete after 5s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network]
+azurerm_network_security_group.project_NSG: Creation complete after 2s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG]
+azurerm_managed_disk.md1[0]: Creation complete after 4s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0]
+azurerm_managed_disk.md1[1]: Creation complete after 4s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1]
+azurerm_virtual_network.main: Creation complete after 5s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network]
 azurerm_subnet.internal: Creating...
-azurerm_subnet.internal: Creation complete after 4s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
+azurerm_subnet.internal: Creation complete after 5s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
 azurerm_subnet_network_security_group_association.assn: Creating...
 azurerm_network_interface.main[1]: Creating...
 azurerm_network_interface.main[0]: Creating...
 azurerm_lb.load_balancer: Still creating... [00m10s elapsed]
-azurerm_subnet_network_security_group_association.assn: Creation complete after 5s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
-azurerm_lb.load_balancer: Creation complete after 12s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb]
+azurerm_lb.load_balancer: Creation complete after 12s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb]
 azurerm_lb_backend_address_pool.bknd_pool: Creating...
-azurerm_lb_backend_address_pool.bknd_pool: Creation complete after 2s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_lb_probe.lb_probe: Creating...
+azurerm_subnet_network_security_group_association.assn: Creation complete after 4s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
 azurerm_network_interface.main[1]: Still creating... [00m10s elapsed]
 azurerm_network_interface.main[0]: Still creating... [00m10s elapsed]
-azurerm_network_interface.main[0]: Creation complete after 16s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0]
+azurerm_lb_backend_address_pool.bknd_pool: Still creating... [00m10s elapsed]
+azurerm_lb_probe.lb_probe: Still creating... [00m10s elapsed]
+azurerm_network_interface.main[0]: Creation complete after 15s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0]
+azurerm_lb_probe.lb_probe: Creation complete after 13s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/probes/test-probe]
+azurerm_lb_backend_address_pool.bknd_pool: Creation complete after 16s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_lb_rule.lb_NSG: Creating...
 azurerm_network_interface.main[1]: Still creating... [00m20s elapsed]
-azurerm_network_interface.main[1]: Creation complete after 28s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Creating...
+azurerm_lb_rule.lb_NSG: Creation complete after 5s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms]
+azurerm_network_interface.main[1]: Creation complete after 27s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1]
 azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Creating...
-azurerm_linux_virtual_machine.main[0]: Creating...
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Creating...
 azurerm_linux_virtual_machine.main[1]: Creating...
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Creation complete after 2s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Creation complete after 2s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_linux_virtual_machine.main[0]: Creating...
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Creation complete after 3s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Creation complete after 3s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
 azurerm_linux_virtual_machine.main[1]: Still creating... [00m10s elapsed]
 azurerm_linux_virtual_machine.main[0]: Still creating... [00m10s elapsed]
 azurerm_linux_virtual_machine.main[0]: Still creating... [00m20s elapsed]
 azurerm_linux_virtual_machine.main[1]: Still creating... [00m20s elapsed]
-azurerm_linux_virtual_machine.main[1]: Still creating... [00m30s elapsed]
 azurerm_linux_virtual_machine.main[0]: Still creating... [00m30s elapsed]
-azurerm_linux_virtual_machine.main[0]: Still creating... [00m40s elapsed]
+azurerm_linux_virtual_machine.main[1]: Still creating... [00m30s elapsed]
 azurerm_linux_virtual_machine.main[1]: Still creating... [00m40s elapsed]
-azurerm_linux_virtual_machine.main[0]: Creation complete after 47s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0]
-azurerm_linux_virtual_machine.main[1]: Creation complete after 48s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1]
-azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creating...
+azurerm_linux_virtual_machine.main[0]: Still creating... [00m40s elapsed]
+azurerm_linux_virtual_machine.main[0]: Creation complete after 48s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0]
+azurerm_linux_virtual_machine.main[1]: Creation complete after 48s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1]
 azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Creating...
-azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creation complete after 8s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0]
-azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Still creating... [00m10s elapsed]
-azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Creation complete after 10s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creating...
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creation complete after 8s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0]
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Creation complete after 8s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1]
 
-Apply complete! Resources: 18 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 20 added, 0 changed, 0 destroyed.
 anveshbharadwaj@Mac cloud % terraform destroy
 var.location
   The Azure Region in which all resources in this example should be created.
@@ -1498,42 +2291,45 @@ var.subscription_id
 
   Enter a value: ad6befd3-6a77-4714-b24d-181b38cb2753
 
+data.azurerm_resource_group.RG: Reading...
+data.azurerm_resource_group.RG: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops]
 data.azurerm_image.packer-image: Reading...
-azurerm_virtual_network.main: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network]
-azurerm_availability_set.availability_set: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset]
-azurerm_public_ip.public_ip: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
-azurerm_managed_disk.md1[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0]
-azurerm_managed_disk.md1[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1]
-azurerm_network_security_group.project_NSG: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG]
-azurerm_subnet.internal: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
-data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
-azurerm_lb.load_balancer: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb]
-azurerm_subnet_network_security_group_association.assn: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
-azurerm_network_interface.main[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1]
-azurerm_network_interface.main[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0]
-azurerm_lb_backend_address_pool.bknd_pool: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
-azurerm_linux_virtual_machine.main[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1]
-azurerm_linux_virtual_machine.main[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
-azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0]
-azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1]
+azurerm_public_ip.public_ip: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
+azurerm_availability_set.availability_set: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset]
+azurerm_managed_disk.md1[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1]
+azurerm_managed_disk.md1[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0]
+azurerm_network_security_group.project_NSG: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG]
+azurerm_virtual_network.main: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network]
+azurerm_lb.load_balancer: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb]
+azurerm_subnet.internal: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
+data.azurerm_image.packer-image: Read complete after 1s [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+azurerm_lb_backend_address_pool.bknd_pool: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_lb_probe.lb_probe: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/probes/test-probe]
+azurerm_subnet_network_security_group_association.assn: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
+azurerm_network_interface.main[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1]
+azurerm_network_interface.main[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0]
+azurerm_lb_rule.lb_NSG: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_linux_virtual_machine.main[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1]
+azurerm_linux_virtual_machine.main[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0]
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Refreshing state... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0]
 
-Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
-symbols:
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   - destroy
 
 Terraform will perform the following actions:
 
   # azurerm_availability_set.availability_set will be destroyed
   - resource "azurerm_availability_set" "availability_set" {
-      - id                           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset" -> null
+      - id                           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset" -> null
       - location                     = "eastus" -> null
       - managed                      = true -> null
       - name                         = "UdacityProject-Anvesh-aset" -> null
       - platform_fault_domain_count  = 3 -> null
       - platform_update_domain_count = 5 -> null
-      - resource_group_name          = "AzureDevops" -> null
+      - resource_group_name          = "Azuredevops" -> null
       - tags                         = {
           - "Project" = "Udacity-deployment-project"
         } -> null
@@ -1541,11 +2337,11 @@ Terraform will perform the following actions:
 
   # azurerm_lb.load_balancer will be destroyed
   - resource "azurerm_lb" "load_balancer" {
-      - id                   = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb" -> null
+      - id                   = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb" -> null
       - location             = "eastus" -> null
       - name                 = "UdacityProject-Anvesh-lb" -> null
       - private_ip_addresses = [] -> null
-      - resource_group_name  = "AzureDevops" -> null
+      - resource_group_name  = "Azuredevops" -> null
       - sku                  = "Standard" -> null
       - sku_tier             = "Regional" -> null
       - tags                 = {
@@ -1554,13 +2350,15 @@ Terraform will perform the following actions:
         # (2 unchanged attributes hidden)
 
       - frontend_ip_configuration {
-          - id                                                 = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/frontendIPConfigurations/primary" -> null
+          - id                                                 = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/frontendIPConfigurations/primary" -> null
           - inbound_nat_rules                                  = [] -> null
-          - load_balancer_rules                                = [] -> null
+          - load_balancer_rules                                = [
+              - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms",
+            ] -> null
           - name                                               = "primary" -> null
           - outbound_rules                                     = [] -> null
           - private_ip_address_allocation                      = "Dynamic" -> null
-          - public_ip_address_id                               = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB" -> null
+          - public_ip_address_id                               = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB" -> null
           - zones                                              = [] -> null
             # (5 unchanged attributes hidden)
         }
@@ -1569,16 +2367,55 @@ Terraform will perform the following actions:
   # azurerm_lb_backend_address_pool.bknd_pool will be destroyed
   - resource "azurerm_lb_backend_address_pool" "bknd_pool" {
       - backend_ip_configurations = [
-          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal",
-          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal",
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal",
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal",
         ] -> null
-      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
+      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
       - inbound_nat_rules         = [] -> null
-      - load_balancing_rules      = [] -> null
-      - loadbalancer_id           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb" -> null
+      - load_balancing_rules      = [
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms",
+        ] -> null
+      - loadbalancer_id           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb" -> null
       - name                      = "UdacityProject-Anvesh-bknd-address-pool-lb" -> null
       - outbound_rules            = [] -> null
         # (2 unchanged attributes hidden)
+    }
+
+  # azurerm_lb_probe.lb_probe will be destroyed
+  - resource "azurerm_lb_probe" "lb_probe" {
+      - id                  = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/probes/test-probe" -> null
+      - interval_in_seconds = 15 -> null
+      - load_balancer_rules = [
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms",
+        ] -> null
+      - loadbalancer_id     = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb" -> null
+      - name                = "test-probe" -> null
+      - number_of_probes    = 2 -> null
+      - port                = 80 -> null
+      - probe_threshold     = 1 -> null
+      - protocol            = "Tcp" -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_lb_rule.lb_NSG will be destroyed
+  - resource "azurerm_lb_rule" "lb_NSG" {
+      - backend_address_pool_ids       = [
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb",
+        ] -> null
+      - backend_port                   = 80 -> null
+      - disable_outbound_snat          = true -> null
+      - enable_floating_ip             = false -> null
+      - enable_tcp_reset               = false -> null
+      - frontend_ip_configuration_id   = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/frontendIPConfigurations/primary" -> null
+      - frontend_ip_configuration_name = "primary" -> null
+      - frontend_port                  = 80 -> null
+      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms" -> null
+      - idle_timeout_in_minutes        = 4 -> null
+      - load_distribution              = "Default" -> null
+      - loadbalancer_id                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb" -> null
+      - name                           = "HTTP-lb-vms" -> null
+      - probe_id                       = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/probes/test-probe" -> null
+      - protocol                       = "Tcp" -> null
     }
 
   # azurerm_linux_virtual_machine.main[0] will be destroyed
@@ -1591,12 +2428,12 @@ Terraform will perform the following actions:
       - disable_password_authentication                        = false -> null
       - encryption_at_host_enabled                             = false -> null
       - extensions_time_budget                                 = "PT1H30M" -> null
-      - id                                                     = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0" -> null
+      - id                                                     = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0" -> null
       - location                                               = "eastus" -> null
       - max_bid_price                                          = -1 -> null
       - name                                                   = "UdacityProject-Anvesh-vm-0" -> null
       - network_interface_ids                                  = [
-          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0",
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0",
         ] -> null
       - patch_assessment_mode                                  = "ImageDefault" -> null
       - patch_mode                                             = "ImageDefault" -> null
@@ -1608,14 +2445,14 @@ Terraform will perform the following actions:
         ] -> null
       - provision_vm_agent                                     = true -> null
       - public_ip_addresses                                    = [] -> null
-      - resource_group_name                                    = "AzureDevops" -> null
+      - resource_group_name                                    = "Azuredevops" -> null
       - secure_boot_enabled                                    = false -> null
       - size                                                   = "Standard_D2s_v3" -> null
       - source_image_id                                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage" -> null
       - tags                                                   = {
           - "Project" = "Udacity-deployment-project"
         } -> null
-      - virtual_machine_id                                     = "7e5a4e45-e360-4e66-8588-d28bf270cf64" -> null
+      - virtual_machine_id                                     = "67dfd492-1ed0-4e12-aed0-747405b075ed" -> null
       - vm_agent_platform_updates_enabled                      = false -> null
       - vtpm_enabled                                           = false -> null
         # (14 unchanged attributes hidden)
@@ -1623,8 +2460,8 @@ Terraform will perform the following actions:
       - os_disk {
           - caching                          = "ReadWrite" -> null
           - disk_size_gb                     = 30 -> null
-          - id                               = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-vm-0_disk1_92278d86f0d244ad8a5ff03468103268" -> null
-          - name                             = "UdacityProject-Anvesh-vm-0_disk1_92278d86f0d244ad8a5ff03468103268" -> null
+          - id                               = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-vm-0_disk1_0aa158320ffd4cbcaf09aa4a5f3dbd74" -> null
+          - name                             = "UdacityProject-Anvesh-vm-0_disk1_0aa158320ffd4cbcaf09aa4a5f3dbd74" -> null
           - storage_account_type             = "Standard_LRS" -> null
           - write_accelerator_enabled        = false -> null
             # (3 unchanged attributes hidden)
@@ -1641,12 +2478,12 @@ Terraform will perform the following actions:
       - disable_password_authentication                        = false -> null
       - encryption_at_host_enabled                             = false -> null
       - extensions_time_budget                                 = "PT1H30M" -> null
-      - id                                                     = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1" -> null
+      - id                                                     = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1" -> null
       - location                                               = "eastus" -> null
       - max_bid_price                                          = -1 -> null
       - name                                                   = "UdacityProject-Anvesh-vm-1" -> null
       - network_interface_ids                                  = [
-          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1",
+          - "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1",
         ] -> null
       - patch_assessment_mode                                  = "ImageDefault" -> null
       - patch_mode                                             = "ImageDefault" -> null
@@ -1658,14 +2495,14 @@ Terraform will perform the following actions:
         ] -> null
       - provision_vm_agent                                     = true -> null
       - public_ip_addresses                                    = [] -> null
-      - resource_group_name                                    = "AzureDevops" -> null
+      - resource_group_name                                    = "Azuredevops" -> null
       - secure_boot_enabled                                    = false -> null
       - size                                                   = "Standard_D2s_v3" -> null
       - source_image_id                                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage" -> null
       - tags                                                   = {
           - "Project" = "Udacity-deployment-project"
         } -> null
-      - virtual_machine_id                                     = "eb132434-2753-4540-a48d-514fa086bcd9" -> null
+      - virtual_machine_id                                     = "30fe71e9-a6b6-43a5-87b6-581d351cfdea" -> null
       - vm_agent_platform_updates_enabled                      = false -> null
       - vtpm_enabled                                           = false -> null
         # (14 unchanged attributes hidden)
@@ -1673,8 +2510,8 @@ Terraform will perform the following actions:
       - os_disk {
           - caching                          = "ReadWrite" -> null
           - disk_size_gb                     = 30 -> null
-          - id                               = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-vm-1_disk1_270fdac2120241f7957c55d300d1bf2e" -> null
-          - name                             = "UdacityProject-Anvesh-vm-1_disk1_270fdac2120241f7957c55d300d1bf2e" -> null
+          - id                               = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-vm-1_disk1_d6b16de7914e4b1eabf499bf27b9376d" -> null
+          - name                             = "UdacityProject-Anvesh-vm-1_disk1_d6b16de7914e4b1eabf499bf27b9376d" -> null
           - storage_account_type             = "Standard_LRS" -> null
           - write_accelerator_enabled        = false -> null
             # (3 unchanged attributes hidden)
@@ -1689,7 +2526,7 @@ Terraform will perform the following actions:
       - disk_mbps_read_only               = 0 -> null
       - disk_mbps_read_write              = 60 -> null
       - disk_size_gb                      = 1 -> null
-      - id                                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0" -> null
+      - id                                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0" -> null
       - location                          = "eastus" -> null
       - max_shares                        = 0 -> null
       - name                              = "UdacityProject-Anvesh-md1-0" -> null
@@ -1698,7 +2535,7 @@ Terraform will perform the following actions:
       - optimized_frequent_attach_enabled = false -> null
       - performance_plus_enabled          = false -> null
       - public_network_access_enabled     = true -> null
-      - resource_group_name               = "AzureDevops" -> null
+      - resource_group_name               = "Azuredevops" -> null
       - storage_account_type              = "Standard_LRS" -> null
       - tags                              = {
           - "Project" = "Udacity-deployment-project"
@@ -1716,7 +2553,7 @@ Terraform will perform the following actions:
       - disk_mbps_read_only               = 0 -> null
       - disk_mbps_read_write              = 60 -> null
       - disk_size_gb                      = 1 -> null
-      - id                                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1" -> null
+      - id                                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1" -> null
       - location                          = "eastus" -> null
       - max_shares                        = 0 -> null
       - name                              = "UdacityProject-Anvesh-md1-1" -> null
@@ -1725,7 +2562,7 @@ Terraform will perform the following actions:
       - optimized_frequent_attach_enabled = false -> null
       - performance_plus_enabled          = false -> null
       - public_network_access_enabled     = true -> null
-      - resource_group_name               = "AzureDevops" -> null
+      - resource_group_name               = "Azuredevops" -> null
       - storage_account_type              = "Standard_LRS" -> null
       - tags                              = {
           - "Project" = "Udacity-deployment-project"
@@ -1740,21 +2577,21 @@ Terraform will perform the following actions:
       - accelerated_networking_enabled = false -> null
       - applied_dns_servers            = [] -> null
       - dns_servers                    = [] -> null
-      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0" -> null
-      - internal_domain_name_suffix    = "igezlzcl5s3ufljxohwkgwydyc.bx.internal.cloudapp.net" -> null
+      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0" -> null
+      - internal_domain_name_suffix    = "oh5bqiehkzbubdk0uadvovvltf.bx.internal.cloudapp.net" -> null
       - ip_forwarding_enabled          = false -> null
       - location                       = "eastus" -> null
-      - mac_address                    = "00-0D-3A-1B-C3-6D" -> null
+      - mac_address                    = "60-45-BD-EB-40-9C" -> null
       - name                           = "UdacityProject-Anvesh-nic-0" -> null
       - private_ip_address             = "10.0.2.4" -> null
       - private_ip_addresses           = [
           - "10.0.2.4",
         ] -> null
-      - resource_group_name            = "AzureDevops" -> null
+      - resource_group_name            = "Azuredevops" -> null
       - tags                           = {
           - "Project" = "Udacity-deployment-project"
         } -> null
-      - virtual_machine_id             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0" -> null
+      - virtual_machine_id             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0" -> null
         # (4 unchanged attributes hidden)
 
       - ip_configuration {
@@ -1763,7 +2600,7 @@ Terraform will perform the following actions:
           - private_ip_address                                 = "10.0.2.4" -> null
           - private_ip_address_allocation                      = "Dynamic" -> null
           - private_ip_address_version                         = "IPv4" -> null
-          - subnet_id                                          = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
+          - subnet_id                                          = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
             # (2 unchanged attributes hidden)
         }
     }
@@ -1773,21 +2610,21 @@ Terraform will perform the following actions:
       - accelerated_networking_enabled = false -> null
       - applied_dns_servers            = [] -> null
       - dns_servers                    = [] -> null
-      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1" -> null
-      - internal_domain_name_suffix    = "igezlzcl5s3ufljxohwkgwydyc.bx.internal.cloudapp.net" -> null
+      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1" -> null
+      - internal_domain_name_suffix    = "oh5bqiehkzbubdk0uadvovvltf.bx.internal.cloudapp.net" -> null
       - ip_forwarding_enabled          = false -> null
       - location                       = "eastus" -> null
-      - mac_address                    = "60-45-BD-FE-0A-CD" -> null
+      - mac_address                    = "00-0D-3A-1D-1C-67" -> null
       - name                           = "UdacityProject-Anvesh-nic-1" -> null
       - private_ip_address             = "10.0.2.5" -> null
       - private_ip_addresses           = [
           - "10.0.2.5",
         ] -> null
-      - resource_group_name            = "AzureDevops" -> null
+      - resource_group_name            = "Azuredevops" -> null
       - tags                           = {
           - "Project" = "Udacity-deployment-project"
         } -> null
-      - virtual_machine_id             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1" -> null
+      - virtual_machine_id             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1" -> null
         # (4 unchanged attributes hidden)
 
       - ip_configuration {
@@ -1796,33 +2633,33 @@ Terraform will perform the following actions:
           - private_ip_address                                 = "10.0.2.5" -> null
           - private_ip_address_allocation                      = "Dynamic" -> null
           - private_ip_address_version                         = "IPv4" -> null
-          - subnet_id                                          = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
+          - subnet_id                                          = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
             # (2 unchanged attributes hidden)
         }
     }
 
   # azurerm_network_interface_backend_address_pool_association.addresspool_assn[0] will be destroyed
   - resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
-      - backend_address_pool_id = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
-      - id                      = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
+      - backend_address_pool_id = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
+      - id                      = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
       - ip_configuration_name   = "internal" -> null
-      - network_interface_id    = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0" -> null
+      - network_interface_id    = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0" -> null
     }
 
   # azurerm_network_interface_backend_address_pool_association.addresspool_assn[1] will be destroyed
   - resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
-      - backend_address_pool_id = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
-      - id                      = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
+      - backend_address_pool_id = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
+      - id                      = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb" -> null
       - ip_configuration_name   = "internal" -> null
-      - network_interface_id    = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1" -> null
+      - network_interface_id    = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1" -> null
     }
 
   # azurerm_network_security_group.project_NSG will be destroyed
   - resource "azurerm_network_security_group" "project_NSG" {
-      - id                  = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG" -> null
+      - id                  = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG" -> null
       - location            = "eastus" -> null
       - name                = "UdacityProject-Anvesh-NSG" -> null
-      - resource_group_name = "AzureDevops" -> null
+      - resource_group_name = "Azuredevops" -> null
       - security_rule       = [
           - {
               - access                                     = "Allow"
@@ -1832,8 +2669,26 @@ Terraform will perform the following actions:
               - destination_port_range                     = "*"
               - destination_port_ranges                    = []
               - direction                                  = "Inbound"
-              - name                                       = "allow-subnet-traffic"
-              - priority                                   = 100
+              - name                                       = "allow-subnet-traffic_inbound"
+              - priority                                   = 120
+              - protocol                                   = "*"
+              - source_address_prefix                      = "VirtualNetwork"
+              - source_address_prefixes                    = []
+              - source_application_security_group_ids      = []
+              - source_port_range                          = "*"
+              - source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          - {
+              - access                                     = "Allow"
+              - destination_address_prefix                 = "VirtualNetwork"
+              - destination_address_prefixes               = []
+              - destination_application_security_group_ids = []
+              - destination_port_range                     = "*"
+              - destination_port_ranges                    = []
+              - direction                                  = "Outbound"
+              - name                                       = "allow-subnet-traffic_outbound"
+              - priority                                   = 120
               - protocol                                   = "*"
               - source_address_prefix                      = "VirtualNetwork"
               - source_address_prefixes                    = []
@@ -1851,7 +2706,7 @@ Terraform will perform the following actions:
               - destination_port_ranges                    = []
               - direction                                  = "Inbound"
               - name                                       = "deny-access-from-internet"
-              - priority                                   = 120
+              - priority                                   = 100
               - protocol                                   = "*"
               - source_address_prefix                      = "Internet"
               - source_address_prefixes                    = []
@@ -1870,14 +2725,14 @@ Terraform will perform the following actions:
   - resource "azurerm_public_ip" "public_ip" {
       - allocation_method       = "Static" -> null
       - ddos_protection_mode    = "VirtualNetworkInherited" -> null
-      - id                      = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB" -> null
+      - id                      = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB" -> null
       - idle_timeout_in_minutes = 4 -> null
-      - ip_address              = "172.172.222.40" -> null
+      - ip_address              = "52.149.150.56" -> null
       - ip_tags                 = {} -> null
       - ip_version              = "IPv4" -> null
       - location                = "eastus" -> null
       - name                    = "PublicIPForLB" -> null
-      - resource_group_name     = "AzureDevops" -> null
+      - resource_group_name     = "Azuredevops" -> null
       - sku                     = "Standard" -> null
       - sku_tier                = "Regional" -> null
       - tags                    = {} -> null
@@ -1891,11 +2746,11 @@ Terraform will perform the following actions:
           - "10.0.2.0/24",
         ] -> null
       - default_outbound_access_enabled               = true -> null
-      - id                                            = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
+      - id                                            = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
       - name                                          = "internal" -> null
       - private_endpoint_network_policies             = "Disabled" -> null
       - private_link_service_network_policies_enabled = true -> null
-      - resource_group_name                           = "AzureDevops" -> null
+      - resource_group_name                           = "Azuredevops" -> null
       - service_endpoint_policy_ids                   = [] -> null
       - service_endpoints                             = [] -> null
       - virtual_network_name                          = "UdacityProject-Anvesh-network" -> null
@@ -1903,19 +2758,19 @@ Terraform will perform the following actions:
 
   # azurerm_subnet_network_security_group_association.assn will be destroyed
   - resource "azurerm_subnet_network_security_group_association" "assn" {
-      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
-      - network_security_group_id = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG" -> null
-      - subnet_id                 = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
+      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
+      - network_security_group_id = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG" -> null
+      - subnet_id                 = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal" -> null
     }
 
   # azurerm_virtual_machine_data_disk_attachment.md_attach[0] will be destroyed
   - resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
       - caching                   = "ReadWrite" -> null
       - create_option             = "Attach" -> null
-      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0" -> null
+      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0" -> null
       - lun                       = 10 -> null
-      - managed_disk_id           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0" -> null
-      - virtual_machine_id        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0" -> null
+      - managed_disk_id           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0" -> null
+      - virtual_machine_id        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0" -> null
       - write_accelerator_enabled = false -> null
     }
 
@@ -1923,10 +2778,10 @@ Terraform will perform the following actions:
   - resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
       - caching                   = "ReadWrite" -> null
       - create_option             = "Attach" -> null
-      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1" -> null
+      - id                        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1" -> null
       - lun                       = 10 -> null
-      - managed_disk_id           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1" -> null
-      - virtual_machine_id        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1" -> null
+      - managed_disk_id           = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1" -> null
+      - virtual_machine_id        = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1" -> null
       - write_accelerator_enabled = false -> null
     }
 
@@ -1937,12 +2792,12 @@ Terraform will perform the following actions:
         ] -> null
       - dns_servers                    = [] -> null
       - flow_timeout_in_minutes        = 0 -> null
-      - guid                           = "e4958941-fc4b-42bb-ad37-71eca35b03c2" -> null
-      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network" -> null
+      - guid                           = "2018fe71-5687-4043-8d5a-a0075756ab9d" -> null
+      - id                             = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network" -> null
       - location                       = "eastus" -> null
       - name                           = "UdacityProject-Anvesh-network" -> null
       - private_endpoint_vnet_policies = "Disabled" -> null
-      - resource_group_name            = "AzureDevops" -> null
+      - resource_group_name            = "Azuredevops" -> null
       - subnet                         = [
           - {
               - address_prefixes                              = [
@@ -1950,11 +2805,11 @@ Terraform will perform the following actions:
                 ]
               - default_outbound_access_enabled               = true
               - delegation                                    = []
-              - id                                            = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal"
+              - id                                            = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal"
               - name                                          = "internal"
               - private_endpoint_network_policies             = "Disabled"
               - private_link_service_network_policies_enabled = true
-              - security_group                                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG"
+              - security_group                                = "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG"
               - service_endpoint_policy_ids                   = []
               - service_endpoints                             = []
                 # (1 unchanged attribute hidden)
@@ -1966,7 +2821,7 @@ Terraform will perform the following actions:
         # (2 unchanged attributes hidden)
     }
 
-Plan: 0 to add, 0 to change, 18 to destroy.
+Plan: 0 to add, 0 to change, 20 to destroy.
 
 Do you really want to destroy all resources?
   Terraform will destroy all your managed infrastructure, as shown above.
@@ -1974,59 +2829,63 @@ Do you really want to destroy all resources?
 
   Enter a value: yes
 
-azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1]
-azurerm_subnet_network_security_group_association.assn: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
-azurerm_availability_set.availability_set: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset]
-azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_subnet_network_security_group_association.assn: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1/dataDisks/UdacityProject-Anvesh-md1-1]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1/ipConfigurations/internal|/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0/dataDisks/UdacityProject-Anvesh-md1-0]
+azurerm_availability_set.availability_set: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/availabilitySets/UdacityProject-Anvesh-aset]
+azurerm_lb_rule.lb_NSG: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/loadBalancingRules/HTTP-lb-vms]
 azurerm_availability_set.availability_set: Destruction complete after 1s
-azurerm_subnet_network_security_group_association.assn: Destruction complete after 4s
-azurerm_network_security_group.project_NSG: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Destruction complete after 5s
-azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Destruction complete after 8s
-azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destruction complete after 8s
-azurerm_linux_virtual_machine.main[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0]
-azurerm_managed_disk.md1[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1]
-azurerm_managed_disk.md1[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0]
-azurerm_linux_virtual_machine.main[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1]
-azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Destruction complete after 8s
-azurerm_lb_backend_address_pool.bknd_pool: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Destruction complete after 3s
+azurerm_lb_rule.lb_NSG: Destruction complete after 4s
+azurerm_lb_probe.lb_probe: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/probes/test-probe]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Destruction complete after 4s
+azurerm_lb_backend_address_pool.bknd_pool: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb/backendAddressPools/UdacityProject-Anvesh-bknd-address-pool-lb]
+azurerm_subnet_network_security_group_association.assn: Destruction complete after 6s
+azurerm_network_security_group.project_NSG: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkSecurityGroups/UdacityProject-Anvesh-NSG]
+azurerm_lb_probe.lb_probe: Destruction complete after 4s
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Destruction complete after 10s
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destruction complete after 10s
+azurerm_managed_disk.md1[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-0]
+azurerm_managed_disk.md1[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/disks/UdacityProject-Anvesh-md1-1]
+azurerm_linux_virtual_machine.main[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-0]
+azurerm_linux_virtual_machine.main[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/virtualMachines/UdacityProject-Anvesh-vm-1]
+azurerm_lb_backend_address_pool.bknd_pool: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ityProject-Anvesh-bknd-address-pool-lb, 00m10s elapsed]
 azurerm_network_security_group.project_NSG: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...curityGroups/UdacityProject-Anvesh-NSG, 00m10s elapsed]
-azurerm_network_security_group.project_NSG: Destruction complete after 11s
+azurerm_network_security_group.project_NSG: Destruction complete after 10s
+azurerm_lb_backend_address_pool.bknd_pool: Destruction complete after 15s
+azurerm_lb.load_balancer: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb]
+azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-1, 00m10s elapsed]
+azurerm_managed_disk.md1[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...pute/disks/UdacityProject-Anvesh-md1-0, 00m10s elapsed]
 azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-0, 00m10s elapsed]
 azurerm_managed_disk.md1[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...pute/disks/UdacityProject-Anvesh-md1-1, 00m10s elapsed]
-azurerm_managed_disk.md1[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...pute/disks/UdacityProject-Anvesh-md1-0, 00m10s elapsed]
-azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-1, 00m10s elapsed]
-azurerm_lb_backend_address_pool.bknd_pool: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ityProject-Anvesh-bknd-address-pool-lb, 00m10s elapsed]
-azurerm_managed_disk.md1[1]: Destruction complete after 10s
 azurerm_managed_disk.md1[0]: Destruction complete after 10s
-azurerm_lb_backend_address_pool.bknd_pool: Destruction complete after 11s
-azurerm_lb.load_balancer: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/UdacityProject-Anvesh-lb]
+azurerm_managed_disk.md1[1]: Destruction complete after 11s
+azurerm_lb.load_balancer: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...loadBalancers/UdacityProject-Anvesh-lb, 00m10s elapsed]
 azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-0, 00m20s elapsed]
 azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-1, 00m20s elapsed]
-azurerm_lb.load_balancer: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...loadBalancers/UdacityProject-Anvesh-lb, 00m10s elapsed]
 azurerm_lb.load_balancer: Destruction complete after 11s
-azurerm_public_ip.public_ip: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
-azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-0, 00m30s elapsed]
+azurerm_public_ip.public_ip: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
 azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-1, 00m30s elapsed]
-azurerm_linux_virtual_machine.main[0]: Destruction complete after 32s
+azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...ualMachines/UdacityProject-Anvesh-vm-0, 00m30s elapsed]
 azurerm_public_ip.public_ip: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...etwork/publicIPAddresses/PublicIPForLB, 00m10s elapsed]
+azurerm_public_ip.public_ip: Destruction complete after 11s
+azurerm_linux_virtual_machine.main[0]: Destruction complete after 32s
 azurerm_linux_virtual_machine.main[1]: Destruction complete after 32s
-azurerm_network_interface.main[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0]
-azurerm_network_interface.main[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1]
-azurerm_public_ip.public_ip: Destruction complete after 10s
-azurerm_network_interface.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...Interfaces/UdacityProject-Anvesh-nic-1, 00m10s elapsed]
+azurerm_network_interface.main[0]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-0]
+azurerm_network_interface.main[1]: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/networkInterfaces/UdacityProject-Anvesh-nic-1]
 azurerm_network_interface.main[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...Interfaces/UdacityProject-Anvesh-nic-0, 00m10s elapsed]
-azurerm_network_interface.main[0]: Destruction complete after 11s
-azurerm_network_interface.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...Interfaces/UdacityProject-Anvesh-nic-1, 00m20s elapsed]
-azurerm_network_interface.main[1]: Destruction complete after 22s
-azurerm_subnet.internal: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
+azurerm_network_interface.main[1]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...Interfaces/UdacityProject-Anvesh-nic-1, 00m10s elapsed]
+azurerm_network_interface.main[1]: Destruction complete after 11s
+azurerm_network_interface.main[0]: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...Interfaces/UdacityProject-Anvesh-nic-0, 00m20s elapsed]
+azurerm_network_interface.main[0]: Destruction complete after 21s
+azurerm_subnet.internal: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network/subnets/internal]
 azurerm_subnet.internal: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...roject-Anvesh-network/subnets/internal, 00m10s elapsed]
-azurerm_subnet.internal: Destruction complete after 10s
-azurerm_virtual_network.main: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network]
+azurerm_subnet.internal: Destruction complete after 11s
+azurerm_virtual_network.main: Destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Network/virtualNetworks/UdacityProject-Anvesh-network]
 azurerm_virtual_network.main: Still destroying... [id=/subscriptions/ad6befd3-6a77-4714-b24d-...Networks/UdacityProject-Anvesh-network, 00m10s elapsed]
 azurerm_virtual_network.main: Destruction complete after 11s
 
-Destroy complete! Resources: 18 destroyed.
-anveshbharadwaj@Mac cloud %
+Destroy complete! Resources: 20 destroyed.
+anveshbharadwaj@Mac cloud % 

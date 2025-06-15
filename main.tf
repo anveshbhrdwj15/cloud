@@ -2,12 +2,16 @@ provider "azurerm" {
   features {}
   subscription_id = "${var.subscription_id}"
 }
+data "azurerm_resource_group" "RG" {
+  name     = "AzureDevops"
+  }
+
 # Virtual network
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-network"
   address_space       = ["10.0.0.0/16"]
   location            = "${var.location}"
-  resource_group_name = "${var.resource_group}"
+  resource_group_name = data.azurerm_resource_group.RG.name
   tags                = var.common_tags
 }
 
@@ -15,24 +19,12 @@ resource "azurerm_virtual_network" "main" {
 resource "azurerm_network_security_group" "project_NSG" {
   name                = "${var.prefix}-NSG"
   location            = "${var.location}"
-  resource_group_name = "${var.resource_group}"
+  resource_group_name = data.azurerm_resource_group.RG.name
   tags                = var.common_tags
-
-  security_rule {
-    name                        = "allow-subnet-traffic"
-    priority                    = 100
-    direction                   = "Inbound"
-    access                      = "Allow"
-    protocol                    = "*"  # Allow any protocol
-    source_port_range           = "*"  # Allow any port range
-    source_address_prefix       = "VirtualNetwork"  # Allow from the subnet
-    destination_port_range      = "*"  # Allow any port range
-    destination_address_prefix   = "VirtualNetwork"  # Allow traffic to the subnet
-  }
-
+    
   security_rule {
     name                        = "deny-access-from-internet"
-    priority                    = 120
+    priority                    = 100
     direction                   = "Inbound"
     access                      = "Deny"
     protocol                    = "*"  # Deny any protocol
@@ -41,12 +33,36 @@ resource "azurerm_network_security_group" "project_NSG" {
     destination_port_range      = "*"
     destination_address_prefix   = "VirtualNetwork"
   }
+  
+  security_rule {
+    name                        = "allow-subnet-traffic_inbound"
+    priority                    = 120
+    direction                   = "Inbound"
+    access                      = "Allow"
+    protocol                    = "*"  # Allow any protocol
+    source_port_range           = "*"  # Allow any port range
+    source_address_prefix       = "VirtualNetwork"  # Allow from the subnet
+    destination_port_range      = "*"  # Allow any port range
+    destination_address_prefix   = "VirtualNetwork"  # Allow traffic to the subnet
+  }
+    security_rule {
+    name                        = "allow-subnet-traffic_outbound"
+    priority                    = 120
+    direction                   = "Outbound"
+    access                      = "Allow"
+    protocol                    = "*"  # Allow any protocol
+    source_port_range           = "*"  # Allow any port range
+    source_address_prefix       = "VirtualNetwork"  # Allow from the subnet
+    destination_port_range      = "*"  # Allow any port range
+    destination_address_prefix   = "VirtualNetwork"  # Allow traffic to the subnet
+  }
+    
 }
 
 # Subnet
 resource "azurerm_subnet" "internal" {
   name                 = "internal"
-  resource_group_name  = "${var.resource_group}"
+  resource_group_name  = data.azurerm_resource_group.RG.name
   virtual_network_name = azurerm_virtual_network.main.name
   address_prefixes     = ["10.0.2.0/24"]
 }
@@ -61,7 +77,7 @@ resource "azurerm_subnet_network_security_group_association" "assn" {
 resource "azurerm_network_interface" "main" {
   count               = "${var.vm_count}"
   name                = "${var.prefix}-nic-${count.index}"
-  resource_group_name = "${var.resource_group}"
+  resource_group_name = data.azurerm_resource_group.RG.name
   tags                = var.common_tags
   location            = "${var.location}"
 
@@ -74,7 +90,7 @@ resource "azurerm_network_interface" "main" {
 resource "azurerm_public_ip" "public_ip" {
   name                = "PublicIPForLB"
   location            = "${var.location}"
-  resource_group_name = "${var.resource_group}"
+  resource_group_name = data.azurerm_resource_group.RG.name
   allocation_method   = "Static"
 }
 
@@ -82,8 +98,7 @@ resource "azurerm_lb" "load_balancer" {
   name                = "${var.prefix}-lb"
   location            = "${var.location}"
   tags                = var.common_tags
-  resource_group_name = "${var.resource_group}"
-
+  resource_group_name = data.azurerm_resource_group.RG.name
   frontend_ip_configuration {
     name                 = "primary"
     public_ip_address_id = azurerm_public_ip.public_ip.id
@@ -108,18 +123,36 @@ resource "azurerm_availability_set" "availability_set" {
   name                = "${var.prefix}-aset"
   location            = "${var.location}"
   tags                = var.common_tags
-  resource_group_name = "${var.resource_group}"
+  resource_group_name = data.azurerm_resource_group.RG.name
+}
+
+resource "azurerm_lb_probe" "lb_probe" {
+  loadbalancer_id = azurerm_lb.load_balancer.id
+  name            = "test-probe"
+  port            = 80
+}
+
+  resource "azurerm_lb_rule" "lb_NSG" {
+  loadbalancer_id                = azurerm_lb.load_balancer.id
+  name                           = "HTTP-lb-vms"
+  protocol                       = "Tcp"
+  frontend_port                  = 80
+  backend_port                   = 80
+  disable_outbound_snat          = true
+  frontend_ip_configuration_name = "primary"
+  probe_id                       = azurerm_lb_probe.lb_probe.id
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.bknd_pool.id]
 }
 
 data "azurerm_image" "packer-image" {
   name                = var.packer_image_name
-  resource_group_name = "${var.resource_group}"
+  resource_group_name = data.azurerm_resource_group.RG.name
 }
 
 resource "azurerm_linux_virtual_machine" "main" {
   count                           = "${var.vm_count}"
   name                            = "${var.prefix}-vm-${count.index}"
-  resource_group_name             = "${var.resource_group}"
+  resource_group_name             = data.azurerm_resource_group.RG.name
   location                        = "${var.location}"
   size                            = "Standard_D2s_v3"
   admin_username                  = var.admin_username
@@ -141,7 +174,7 @@ resource "azurerm_managed_disk" "md1" {
   count                = "${var.vm_count}"
   name                 = "${var.prefix}-md1-${count.index}"
   location             = "${var.location}"
-  resource_group_name  = "${var.resource_group}"
+  resource_group_name  = data.azurerm_resource_group.RG.name
   tags                 = var.common_tags
   storage_account_type = "Standard_LRS"
   create_option        = "Empty"

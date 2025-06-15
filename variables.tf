@@ -27,11 +27,6 @@ variable "admin_password" {
   default = "Anvesh@123"
 }
 
-variable "resource_group" {
-  description = "resourcegroup"
-  default = "AzureDevops"
-}
-
 variable "packer_image_name" {
   description = "Name of the Packer image"
   default     = "AnveshprojectImage"
