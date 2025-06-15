@@ -1,8 +1,7 @@
 provider "azurerm" {
   features {}
-  subscription_id = "83316a40-5757-40fd-8e78-645eefac51b6"
+  subscription_id = "${var.subscription_id}"
 }
-
 # Virtual network
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-network"
@@ -131,7 +130,7 @@ resource "azurerm_linux_virtual_machine" "main" {
     azurerm_network_interface.main[count.index].id,
   ]
 
-  source_image_id = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+  source_image_id = "${var.source_image_id}"
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"

@@ -8,4 +8,6 @@
 8)terraform delete
 
 
+ManagedImageId: /subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage
 
+ad6befd3-6a77-4714-b24d-181b38cb2753

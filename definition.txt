@@ -1,12 +1,11 @@
 {
   "properties": {
-    "displayName": "tags_on_vms_noparams",
+    "displayName": "tags_on_vms",
     "policyType": "Custom",
     "mode": "All",
-    "description": "check tags on vms and deny resource creating if they do not",
     "metadata": {
-      "createdBy": "c7d689cf-7ec6-499c-8bf8-91e0b2e4704e",
-      "createdOn": "2025-06-13T04:33:01.0008256Z",
+      "createdBy": "b85bf76c-a76e-490f-ae3d-6236db8b039c",
+      "createdOn": "2025-06-15T16:32:19.0683762Z",
       "updatedBy": null,
       "updatedOn": null
     },
@@ -33,15 +32,15 @@
       "1.0.0"
     ]
   },
-  "id": "/subscriptions/e7a256dc-769a-421c-9f8e-e283ed3cbefa/providers/Microsoft.Authorization/policyDefinitions/aca22bbf-45f2-4627-ba79-d119f1a961c2",
+  "id": "/subscriptions/ad6befd3-6a77-4714-b24d-181b38cb2753/providers/Microsoft.Authorization/policyDefinitions/d03dbc1f-0c11-4987-a3a7-9bafca104644",
   "type": "Microsoft.Authorization/policyDefinitions",
-  "name": "aca22bbf-45f2-4627-ba79-d119f1a961c2",
+  "name": "d03dbc1f-0c11-4987-a3a7-9bafca104644",
   "systemData": {
-    "createdBy": "odl_user_283262@udacityhol.onmicrosoft.com",
+    "createdBy": "odl_user_283588@udacityhol.onmicrosoft.com",
     "createdByType": "User",
-    "createdAt": "2025-06-13T04:33:00.9740062Z",
-    "lastModifiedBy": "odl_user_283262@udacityhol.onmicrosoft.com",
+    "createdAt": "2025-06-15T16:32:18.9705627Z",
+    "lastModifiedBy": "odl_user_283588@udacityhol.onmicrosoft.com",
     "lastModifiedByType": "User",
-    "lastModifiedAt": "2025-06-13T04:33:00.9740062Z"
+    "lastModifiedAt": "2025-06-15T16:32:18.9705627Z"
   }
 }

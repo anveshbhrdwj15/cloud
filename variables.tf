@@ -9,6 +9,14 @@ variable "location" {
   description = "The Azure Region in which all resources in this example should be created."
 }
 
+variable "subscription_id" {
+  description = "The Azure subscription_id which all resources will be utilized."
+}
+
+variable "source_image_id" {
+  description = "The Image ID that was produced from Packer build."
+  }
+
 variable "admin_username" {
   description = "The admin username for the VM being created."
   default = "Anvesh"
