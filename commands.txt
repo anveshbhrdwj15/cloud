@@ -1,9 +1,14 @@
-    
-### to assign policy to subscription ###
-    az policy assignment create \
-        --template-uri /Users/anveshbharadwaj/Documents/azure/cloud/policy.json
-        --scope /subscriptions/e7a256dc-769a-421c-9f8e-e283ed3cbefa \
-        --policy tagging-policy
+1)
+2)az policy definition create --name 'Tagging-custom-policy' --display-name 'Tagging Custom Policy for udacity project' --description 'This policy ensures resources meet a custom requirement.' --rules 'policy.json' --mode All
+3) packer build -var-file=packervar.json server.json  ##no auto var
+4)terraform init main.tf
+5)terraform plan -out solution.plan
+6)terraform apply
+7)terraform delete
+
+
+
+
 az policy assignment create \
   --name 'tagging-policy' \
   --display-name 'Audit VM that are tagged' \
@@ -17,13 +22,3 @@ az policy assignment list
 
  Packer build packer.json
 
-Az image list
-
-
-
- "variables": {
-      "client_id": "{{env `ARM_CLIENT_ID`}}",
-      "client_secret": "{{env `ARM_CLIENT_SECRET`}}",
-      "subscription_id": "{{env `ARM_SUBSCRIPTION_ID`}}",
-      "resource_group1": "{{env `resource_group`}}"
-  },

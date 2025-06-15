@@ -16,7 +16,7 @@ variable "admin_username" {
 
 variable "admin_password" {
   description = "The password for the VM being created."
-  default = "Anvesh"
+  default = "Anvesh@123"
 }
 
 variable "resource_group" {
@@ -26,9 +26,17 @@ variable "resource_group" {
 
 variable "packer_image_name" {
   description = "Name of the Packer image"
-  default     = "myPackerImage"
+  default     = "AnveshprojectImage"
 }
 variable "vm_count" {
-  description = "No. of vms to deploy"
-  default     = "1"
+  description = "No. of vms to deploy. min is 2 and max is 5"
+  default     =  range(2,5,1)
 }
+variable "common_tags" {
+  type = map(string)
+  default = {
+    Project = "Udacity-deployment-project"
+  }
+}
+
+
