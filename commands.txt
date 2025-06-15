@@ -1,24 +1,11 @@
-1)
+1)cd /Users/anveshbharadwaj/Documents/azure/cloud
 2)az policy definition create --name 'Tagging-custom-policy' --display-name 'Tagging Custom Policy for udacity project' --description 'This policy ensures resources meet a custom requirement.' --rules 'policy.json' --mode All
 3) packer build -var-file=packervar.json server.json  ##no auto var
-4)terraform init main.tf
-5)terraform plan -out solution.plan
-6)terraform apply
-7)terraform delete
+4) az account set --subscription "ad6befd3-6a77-4714-b24d-181b38cb2753"
+5)terraform init
+6)terraform plan -out solution.plan
+7)terraform apply
+8)terraform delete
 
 
-
-
-az policy assignment create \
-  --name 'tagging-policy' \
-  --display-name 'Audit VM that are tagged' \
-  --scope e7a256dc-769a-421c-9f8e-e283ed3cbefa \
-  --policy $definition \
-  --description 'Azure CLI policy assignment to resource group'
-
-### screenshot policy assignment list ###
-az policy assignment list
-
-
- Packer build packer.json
 

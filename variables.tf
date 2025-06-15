@@ -30,7 +30,11 @@ variable "packer_image_name" {
 }
 variable "vm_count" {
   description = "No. of vms to deploy. min is 2 and max is 5"
-  default     =  range(2,5,1)
+  default = 2
+  validation {
+    condition     = var.vm_count > 1 && var.vm_count < 6
+    error_message = "The vm_count value must be at least 2, and for cost reasons, no more than 5."
+  }
 }
 variable "common_tags" {
   type = map(string)

@@ -1,6 +1,6 @@
 provider "azurerm" {
   features {}
-  subscription_id = "6e375b9d-ad4b-4945-b141-04c0f4b89b97"
+  subscription_id = "83316a40-5757-40fd-8e78-645eefac51b6"
 }
 
 # Virtual network
@@ -131,7 +131,7 @@ resource "azurerm_linux_virtual_machine" "main" {
     azurerm_network_interface.main[count.index].id,
   ]
 
-  source_image_id = "/subscriptions/6e375b9d-ad4b-4945-b141-04c0f4b89b97/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+  source_image_id = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
@@ -139,7 +139,8 @@ resource "azurerm_linux_virtual_machine" "main" {
 }
 
 resource "azurerm_managed_disk" "md1" {
-  name                 = "${var.prefix}-md1"
+  count                = "${var.vm_count}"
+  name                 = "${var.prefix}-md1-${count.index}"
   location             = "${var.location}"
   resource_group_name  = "${var.resource_group}"
   tags                 = var.common_tags
@@ -149,7 +150,7 @@ resource "azurerm_managed_disk" "md1" {
 }
 
 resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
-  managed_disk_id    = azurerm_managed_disk.md1.id
+  managed_disk_id    = azurerm_managed_disk.md1[count.index].id
   count                           = "${var.vm_count}"
   virtual_machine_id = azurerm_linux_virtual_machine.main[count.index].id
   lun                = "10"

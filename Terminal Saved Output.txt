@@ -1,0 +1,1975 @@
+Last login: Sun Jun 15 10:51:01 on ttys000
+anveshbharadwaj@Mac cloud % az login
+A web browser has been opened at https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize. Please continue the login in the web browser. If no web browser is available or if the web browser fails to open, use device code flow with `az login --use-device-code`.
+
+Retrieving tenants and subscriptions for the selection...
+
+[Tenant and subscription selection]
+
+No     Subscription name    Subscription ID                       Tenant
+-----  -------------------  ------------------------------------  ------------
+[1] *  UdacityDS - 72       83316a40-5757-40fd-8e78-645eefac51b6  Udacity - DS
+
+The default is marked with an *; the default tenant is 'Udacity - DS' and subscription is 'UdacityDS - 72' (83316a40-5757-40fd-8e78-645eefac51b6).
+
+Select a subscription and tenant (Type a number or Enter for no changes): 
+
+Tenant: Udacity - DS
+Subscription: UdacityDS - 72 (83316a40-5757-40fd-8e78-645eefac51b6)
+
+[Announcements]
+With the new Azure CLI login experience, you can select the subscription you want to use more easily. Learn more about it and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236
+
+If you encounter any problem, please open an issue at https://aka.ms/azclibug
+
+[Warning] The login output has been updated. Please be aware that it no longer displays the full list of available subscriptions by default.
+
+anveshbharadwaj@Mac cloud % terraform pla
+Terraform has no command named "pla". Did you mean "plan"?
+
+To see all of Terraform's top-level commands, run:
+  terraform -help
+
+anveshbharadwaj@Mac cloud % terraform plan
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+data.azurerm_image.packer-image: Reading...
+data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_availability_set.availability_set will be created
+  + resource "azurerm_availability_set" "availability_set" {
+      + id                           = (known after apply)
+      + location                     = "eastus"
+      + managed                      = true
+      + name                         = "Udacity-aset"
+      + platform_fault_domain_count  = 3
+      + platform_update_domain_count = 5
+      + resource_group_name          = "AzureDevops"
+      + tags                         = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_lb.load_balancer will be created
+  + resource "azurerm_lb" "load_balancer" {
+      + id                   = (known after apply)
+      + location             = "eastus"
+      + name                 = "Udacity-lb"
+      + private_ip_address   = (known after apply)
+      + private_ip_addresses = (known after apply)
+      + resource_group_name  = "AzureDevops"
+      + sku                  = "Standard"
+      + sku_tier             = "Regional"
+      + tags                 = {
+          + "Project" = "Udacity-deployment-project"
+        }
+
+      + frontend_ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + id                                                 = (known after apply)
+          + inbound_nat_rules                                  = (known after apply)
+          + load_balancer_rules                                = (known after apply)
+          + name                                               = "primary"
+          + outbound_rules                                     = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = (known after apply)
+          + private_ip_address_version                         = (known after apply)
+          + public_ip_address_id                               = (known after apply)
+          + public_ip_prefix_id                                = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_lb_backend_address_pool.bknd_pool will be created
+  + resource "azurerm_lb_backend_address_pool" "bknd_pool" {
+      + backend_ip_configurations = (known after apply)
+      + id                        = (known after apply)
+      + inbound_nat_rules         = (known after apply)
+      + load_balancing_rules      = (known after apply)
+      + loadbalancer_id           = (known after apply)
+      + name                      = "Udacity-bknd-address-pool-lb"
+      + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[0] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "Udacity-vm-0"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "AzureDevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[1] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "Udacity-vm-1"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "AzureDevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_managed_disk.md1 will be created
+  + resource "azurerm_managed_disk" "md1" {
+      + create_option                     = "Empty"
+      + disk_iops_read_only               = (known after apply)
+      + disk_iops_read_write              = (known after apply)
+      + disk_mbps_read_only               = (known after apply)
+      + disk_mbps_read_write              = (known after apply)
+      + disk_size_gb                      = 1
+      + id                                = (known after apply)
+      + location                          = "eastus"
+      + logical_sector_size               = (known after apply)
+      + max_shares                        = (known after apply)
+      + name                              = "Udacity-md1"
+      + network_access_policy             = "AllowAll"
+      + optimized_frequent_attach_enabled = false
+      + performance_plus_enabled          = false
+      + public_network_access_enabled     = true
+      + resource_group_name               = "AzureDevops"
+      + source_uri                        = (known after apply)
+      + storage_account_type              = "Standard_LRS"
+      + tags                              = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+    }
+
+  # azurerm_network_interface.main[0] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "Udacity-nic-0"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "AzureDevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface.main[1] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "Udacity-nic-1"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "AzureDevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[0] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[1] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_security_group.project_NSG will be created
+  + resource "azurerm_network_security_group" "project_NSG" {
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "Udacity-NSG"
+      + resource_group_name = "AzureDevops"
+      + security_rule       = [
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "allow-subnet-traffic"
+              + priority                                   = 100
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Deny"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "deny-access-from-internet"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "Internet"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + tags                = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_public_ip.public_ip will be created
+  + resource "azurerm_public_ip" "public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "PublicIPForLB"
+      + resource_group_name     = "AzureDevops"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_subnet.internal will be created
+  + resource "azurerm_subnet" "internal" {
+      + address_prefixes                              = [
+          + "10.0.2.0/24",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "internal"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "AzureDevops"
+      + virtual_network_name                          = "Udacity-network"
+    }
+
+  # azurerm_subnet_network_security_group_association.assn will be created
+  + resource "azurerm_subnet_network_security_group_association" "assn" {
+      + id                        = (known after apply)
+      + network_security_group_id = (known after apply)
+      + subnet_id                 = (known after apply)
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[0] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[1] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space                  = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers                    = (known after apply)
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus"
+      + name                           = "Udacity-network"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "AzureDevops"
+      + subnet                         = (known after apply)
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+Plan: 17 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run
+"terraform apply" now.
+anveshbharadwaj@Mac cloud % terraform plan -out solution.plan
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+data.azurerm_image.packer-image: Reading...
+data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_availability_set.availability_set will be created
+  + resource "azurerm_availability_set" "availability_set" {
+      + id                           = (known after apply)
+      + location                     = "eastus"
+      + managed                      = true
+      + name                         = "Udacity-aset"
+      + platform_fault_domain_count  = 3
+      + platform_update_domain_count = 5
+      + resource_group_name          = "AzureDevops"
+      + tags                         = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_lb.load_balancer will be created
+  + resource "azurerm_lb" "load_balancer" {
+      + id                   = (known after apply)
+      + location             = "eastus"
+      + name                 = "Udacity-lb"
+      + private_ip_address   = (known after apply)
+      + private_ip_addresses = (known after apply)
+      + resource_group_name  = "AzureDevops"
+      + sku                  = "Standard"
+      + sku_tier             = "Regional"
+      + tags                 = {
+          + "Project" = "Udacity-deployment-project"
+        }
+
+      + frontend_ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + id                                                 = (known after apply)
+          + inbound_nat_rules                                  = (known after apply)
+          + load_balancer_rules                                = (known after apply)
+          + name                                               = "primary"
+          + outbound_rules                                     = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = (known after apply)
+          + private_ip_address_version                         = (known after apply)
+          + public_ip_address_id                               = (known after apply)
+          + public_ip_prefix_id                                = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_lb_backend_address_pool.bknd_pool will be created
+  + resource "azurerm_lb_backend_address_pool" "bknd_pool" {
+      + backend_ip_configurations = (known after apply)
+      + id                        = (known after apply)
+      + inbound_nat_rules         = (known after apply)
+      + load_balancing_rules      = (known after apply)
+      + loadbalancer_id           = (known after apply)
+      + name                      = "Udacity-bknd-address-pool-lb"
+      + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[0] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "Udacity-vm-0"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "AzureDevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[1] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "Udacity-vm-1"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "AzureDevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_managed_disk.md1 will be created
+  + resource "azurerm_managed_disk" "md1" {
+      + create_option                     = "Empty"
+      + disk_iops_read_only               = (known after apply)
+      + disk_iops_read_write              = (known after apply)
+      + disk_mbps_read_only               = (known after apply)
+      + disk_mbps_read_write              = (known after apply)
+      + disk_size_gb                      = 1
+      + id                                = (known after apply)
+      + location                          = "eastus"
+      + logical_sector_size               = (known after apply)
+      + max_shares                        = (known after apply)
+      + name                              = "Udacity-md1"
+      + network_access_policy             = "AllowAll"
+      + optimized_frequent_attach_enabled = false
+      + performance_plus_enabled          = false
+      + public_network_access_enabled     = true
+      + resource_group_name               = "AzureDevops"
+      + source_uri                        = (known after apply)
+      + storage_account_type              = "Standard_LRS"
+      + tags                              = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+    }
+
+  # azurerm_network_interface.main[0] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "Udacity-nic-0"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "AzureDevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface.main[1] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "Udacity-nic-1"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "AzureDevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[0] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[1] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_security_group.project_NSG will be created
+  + resource "azurerm_network_security_group" "project_NSG" {
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "Udacity-NSG"
+      + resource_group_name = "AzureDevops"
+      + security_rule       = [
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "allow-subnet-traffic"
+              + priority                                   = 100
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Deny"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "deny-access-from-internet"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "Internet"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + tags                = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_public_ip.public_ip will be created
+  + resource "azurerm_public_ip" "public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "PublicIPForLB"
+      + resource_group_name     = "AzureDevops"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_subnet.internal will be created
+  + resource "azurerm_subnet" "internal" {
+      + address_prefixes                              = [
+          + "10.0.2.0/24",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "internal"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "AzureDevops"
+      + virtual_network_name                          = "Udacity-network"
+    }
+
+  # azurerm_subnet_network_security_group_association.assn will be created
+  + resource "azurerm_subnet_network_security_group_association" "assn" {
+      + id                        = (known after apply)
+      + network_security_group_id = (known after apply)
+      + subnet_id                 = (known after apply)
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[0] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[1] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space                  = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers                    = (known after apply)
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus"
+      + name                           = "Udacity-network"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "AzureDevops"
+      + subnet                         = (known after apply)
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+Plan: 17 to add, 0 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: solution.plan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "solution.plan"
+anveshbharadwaj@Mac cloud % terraform apply
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+data.azurerm_image.packer-image: Reading...
+data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # azurerm_availability_set.availability_set will be created
+  + resource "azurerm_availability_set" "availability_set" {
+      + id                           = (known after apply)
+      + location                     = "eastus"
+      + managed                      = true
+      + name                         = "Udacity-aset"
+      + platform_fault_domain_count  = 3
+      + platform_update_domain_count = 5
+      + resource_group_name          = "AzureDevops"
+      + tags                         = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_lb.load_balancer will be created
+  + resource "azurerm_lb" "load_balancer" {
+      + id                   = (known after apply)
+      + location             = "eastus"
+      + name                 = "Udacity-lb"
+      + private_ip_address   = (known after apply)
+      + private_ip_addresses = (known after apply)
+      + resource_group_name  = "AzureDevops"
+      + sku                  = "Standard"
+      + sku_tier             = "Regional"
+      + tags                 = {
+          + "Project" = "Udacity-deployment-project"
+        }
+
+      + frontend_ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + id                                                 = (known after apply)
+          + inbound_nat_rules                                  = (known after apply)
+          + load_balancer_rules                                = (known after apply)
+          + name                                               = "primary"
+          + outbound_rules                                     = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = (known after apply)
+          + private_ip_address_version                         = (known after apply)
+          + public_ip_address_id                               = (known after apply)
+          + public_ip_prefix_id                                = (known after apply)
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_lb_backend_address_pool.bknd_pool will be created
+  + resource "azurerm_lb_backend_address_pool" "bknd_pool" {
+      + backend_ip_configurations = (known after apply)
+      + id                        = (known after apply)
+      + inbound_nat_rules         = (known after apply)
+      + load_balancing_rules      = (known after apply)
+      + loadbalancer_id           = (known after apply)
+      + name                      = "Udacity-bknd-address-pool-lb"
+      + outbound_rules            = (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[0] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "Udacity-vm-0"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "AzureDevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_linux_virtual_machine.main[1] will be created
+  + resource "azurerm_linux_virtual_machine" "main" {
+      + admin_password                                         = (sensitive value)
+      + admin_username                                         = "Anvesh"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = false
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "eastus"
+      + max_bid_price                                          = -1
+      + name                                                   = "Udacity-vm-1"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "AzureDevops"
+      + size                                                   = "Standard_D2s_v3"
+      + source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage"
+      + tags                                                   = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = (known after apply)
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + id                        = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Standard_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_managed_disk.md1 will be created
+  + resource "azurerm_managed_disk" "md1" {
+      + create_option                     = "Empty"
+      + disk_iops_read_only               = (known after apply)
+      + disk_iops_read_write              = (known after apply)
+      + disk_mbps_read_only               = (known after apply)
+      + disk_mbps_read_write              = (known after apply)
+      + disk_size_gb                      = 1
+      + id                                = (known after apply)
+      + location                          = "eastus"
+      + logical_sector_size               = (known after apply)
+      + max_shares                        = (known after apply)
+      + name                              = "Udacity-md1"
+      + network_access_policy             = "AllowAll"
+      + optimized_frequent_attach_enabled = false
+      + performance_plus_enabled          = false
+      + public_network_access_enabled     = true
+      + resource_group_name               = "AzureDevops"
+      + source_uri                        = (known after apply)
+      + storage_account_type              = "Standard_LRS"
+      + tags                              = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+    }
+
+  # azurerm_network_interface.main[0] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "Udacity-nic-0"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "AzureDevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface.main[1] will be created
+  + resource "azurerm_network_interface" "main" {
+      + accelerated_networking_enabled = false
+      + applied_dns_servers            = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = false
+      + location                       = "eastus"
+      + mac_address                    = (known after apply)
+      + name                           = "Udacity-nic-1"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "AzureDevops"
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[0] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[1] will be created
+  + resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      + backend_address_pool_id = (known after apply)
+      + id                      = (known after apply)
+      + ip_configuration_name   = "internal"
+      + network_interface_id    = (known after apply)
+    }
+
+  # azurerm_network_security_group.project_NSG will be created
+  + resource "azurerm_network_security_group" "project_NSG" {
+      + id                  = (known after apply)
+      + location            = "eastus"
+      + name                = "Udacity-NSG"
+      + resource_group_name = "AzureDevops"
+      + security_rule       = [
+          + {
+              + access                                     = "Allow"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "allow-subnet-traffic"
+              + priority                                   = 100
+              + protocol                                   = "*"
+              + source_address_prefix                      = "VirtualNetwork"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          + {
+              + access                                     = "Deny"
+              + destination_address_prefix                 = "VirtualNetwork"
+              + destination_address_prefixes               = []
+              + destination_application_security_group_ids = []
+              + destination_port_range                     = "*"
+              + destination_port_ranges                    = []
+              + direction                                  = "Inbound"
+              + name                                       = "deny-access-from-internet"
+              + priority                                   = 120
+              + protocol                                   = "*"
+              + source_address_prefix                      = "Internet"
+              + source_address_prefixes                    = []
+              + source_application_security_group_ids      = []
+              + source_port_range                          = "*"
+              + source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+        ]
+      + tags                = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+  # azurerm_public_ip.public_ip will be created
+  + resource "azurerm_public_ip" "public_ip" {
+      + allocation_method       = "Static"
+      + ddos_protection_mode    = "VirtualNetworkInherited"
+      + fqdn                    = (known after apply)
+      + id                      = (known after apply)
+      + idle_timeout_in_minutes = 4
+      + ip_address              = (known after apply)
+      + ip_version              = "IPv4"
+      + location                = "eastus"
+      + name                    = "PublicIPForLB"
+      + resource_group_name     = "AzureDevops"
+      + sku                     = "Standard"
+      + sku_tier                = "Regional"
+    }
+
+  # azurerm_subnet.internal will be created
+  + resource "azurerm_subnet" "internal" {
+      + address_prefixes                              = [
+          + "10.0.2.0/24",
+        ]
+      + default_outbound_access_enabled               = true
+      + id                                            = (known after apply)
+      + name                                          = "internal"
+      + private_endpoint_network_policies             = "Disabled"
+      + private_link_service_network_policies_enabled = true
+      + resource_group_name                           = "AzureDevops"
+      + virtual_network_name                          = "Udacity-network"
+    }
+
+  # azurerm_subnet_network_security_group_association.assn will be created
+  + resource "azurerm_subnet_network_security_group_association" "assn" {
+      + id                        = (known after apply)
+      + network_security_group_id = (known after apply)
+      + subnet_id                 = (known after apply)
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[0] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[1] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = (known after apply)
+      + write_accelerator_enabled = false
+    }
+
+  # azurerm_virtual_network.main will be created
+  + resource "azurerm_virtual_network" "main" {
+      + address_space                  = [
+          + "10.0.0.0/16",
+        ]
+      + dns_servers                    = (known after apply)
+      + guid                           = (known after apply)
+      + id                             = (known after apply)
+      + location                       = "eastus"
+      + name                           = "Udacity-network"
+      + private_endpoint_vnet_policies = "Disabled"
+      + resource_group_name            = "AzureDevops"
+      + subnet                         = (known after apply)
+      + tags                           = {
+          + "Project" = "Udacity-deployment-project"
+        }
+    }
+
+Plan: 17 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_availability_set.availability_set: Creating...
+azurerm_virtual_network.main: Creating...
+azurerm_public_ip.public_ip: Creating...
+azurerm_managed_disk.md1: Creating...
+azurerm_network_security_group.project_NSG: Creating...
+azurerm_availability_set.availability_set: Creation complete after 1s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/Udacity-aset]
+azurerm_public_ip.public_ip: Creation complete after 2s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
+azurerm_lb.load_balancer: Creating...
+azurerm_network_security_group.project_NSG: Creation complete after 3s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG]
+azurerm_managed_disk.md1: Creation complete after 4s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1]
+azurerm_virtual_network.main: Creation complete after 5s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network]
+azurerm_subnet.internal: Creating...
+azurerm_subnet.internal: Creation complete after 5s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_subnet_network_security_group_association.assn: Creating...
+azurerm_network_interface.main[1]: Creating...
+azurerm_network_interface.main[0]: Creating...
+azurerm_lb.load_balancer: Still creating... [00m10s elapsed]
+azurerm_lb.load_balancer: Creation complete after 12s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb]
+azurerm_lb_backend_address_pool.bknd_pool: Creating...
+azurerm_subnet_network_security_group_association.assn: Creation complete after 5s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_lb_backend_address_pool.bknd_pool: Creation complete after 2s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_network_interface.main[0]: Still creating... [00m10s elapsed]
+azurerm_network_interface.main[1]: Still creating... [00m10s elapsed]
+azurerm_network_interface.main[0]: Creation complete after 16s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0]
+azurerm_network_interface.main[1]: Still creating... [00m20s elapsed]
+azurerm_network_interface.main[1]: Creation complete after 28s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Creating...
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Creating...
+azurerm_linux_virtual_machine.main[1]: Creating...
+azurerm_linux_virtual_machine.main[0]: Creating...
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Creation complete after 3s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Creation complete after 3s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_linux_virtual_machine.main[1]: Still creating... [00m10s elapsed]
+azurerm_linux_virtual_machine.main[0]: Still creating... [00m10s elapsed]
+azurerm_linux_virtual_machine.main[1]: Still creating... [00m20s elapsed]
+azurerm_linux_virtual_machine.main[0]: Still creating... [00m20s elapsed]
+azurerm_linux_virtual_machine.main[0]: Still creating... [00m30s elapsed]
+azurerm_linux_virtual_machine.main[1]: Still creating... [00m30s elapsed]
+azurerm_linux_virtual_machine.main[1]: Still creating... [00m40s elapsed]
+azurerm_linux_virtual_machine.main[0]: Still creating... [00m40s elapsed]
+azurerm_linux_virtual_machine.main[0]: Creation complete after 47s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0]
+azurerm_linux_virtual_machine.main[1]: Creation complete after 47s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creating...
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Creating...
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creation complete after 8s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1]
+╷
+│ Error: updating Virtual Machine (Subscription: "83316a40-5757-40fd-8e78-645eefac51b6"
+│ Resource Group Name: "AzureDevops"
+│ Virtual Machine Name: "Udacity-vm-1") with Disk "Udacity-md1": performing CreateOrUpdate: unexpected status 409 (409 Conflict) with error: ConflictingUserInput: Disk 'Udacity-md1' is being attached to VM '/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0' and cannot be attached to VM '/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1'.
+│ 
+│   with azurerm_virtual_machine_data_disk_attachment.md_attach[1],
+│   on main.tf line 151, in resource "azurerm_virtual_machine_data_disk_attachment" "md_attach":
+│  151: resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+│ 
+╵
+anveshbharadwaj@Mac cloud % terraform apply
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+╷
+│ Error: Missing resource instance key
+│ 
+│   on main.tf line 153, in resource "azurerm_virtual_machine_data_disk_attachment" "md_attach":
+│  153:   managed_disk_id    = azurerm_managed_disk.md1.id
+│ 
+│ Because azurerm_managed_disk.md1 has "count" set, its attributes must be accessed on specific instances.
+│ 
+│ For example, to correlate with indices of a referring resource, use:
+│     azurerm_managed_disk.md1[count.index]
+╵
+anveshbharadwaj@Mac cloud % terraform apply
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+data.azurerm_image.packer-image: Reading...
+azurerm_public_ip.public_ip: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
+azurerm_availability_set.availability_set: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/Udacity-aset]
+azurerm_virtual_network.main: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network]
+azurerm_managed_disk.md1[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1]
+azurerm_network_security_group.project_NSG: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG]
+data.azurerm_image.packer-image: Read complete after 0s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+azurerm_lb.load_balancer: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb]
+azurerm_subnet.internal: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_lb_backend_address_pool.bknd_pool: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_subnet_network_security_group_association.assn: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_network_interface.main[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1]
+azurerm_network_interface.main[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_linux_virtual_machine.main[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0]
+azurerm_linux_virtual_machine.main[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  + create
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # azurerm_managed_disk.md1[0] must be replaced
+  # (moved from azurerm_managed_disk.md1)
+-/+ resource "azurerm_managed_disk" "md1" {
+      ~ disk_iops_read_only               = 0 -> (known after apply)
+      ~ disk_iops_read_write              = 500 -> (known after apply)
+      ~ disk_mbps_read_only               = 0 -> (known after apply)
+      ~ disk_mbps_read_write              = 60 -> (known after apply)
+      ~ id                                = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1" -> (known after apply)
+      + logical_sector_size               = (known after apply)
+      ~ max_shares                        = 0 -> (known after apply)
+      ~ name                              = "Udacity-md1" -> "Udacity-md1-0" # forces replacement
+      - on_demand_bursting_enabled        = false -> null
+      + source_uri                        = (known after apply)
+        tags                              = {
+            "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+      - trusted_launch_enabled            = false -> null
+      - upload_size_bytes                 = 0 -> null
+        # (21 unchanged attributes hidden)
+    }
+
+  # azurerm_managed_disk.md1[1] will be created
+  + resource "azurerm_managed_disk" "md1" {
+      + create_option                     = "Empty"
+      + disk_iops_read_only               = (known after apply)
+      + disk_iops_read_write              = (known after apply)
+      + disk_mbps_read_only               = (known after apply)
+      + disk_mbps_read_write              = (known after apply)
+      + disk_size_gb                      = 1
+      + id                                = (known after apply)
+      + location                          = "eastus"
+      + logical_sector_size               = (known after apply)
+      + max_shares                        = (known after apply)
+      + name                              = "Udacity-md1-1"
+      + network_access_policy             = "AllowAll"
+      + optimized_frequent_attach_enabled = false
+      + performance_plus_enabled          = false
+      + public_network_access_enabled     = true
+      + resource_group_name               = "AzureDevops"
+      + source_uri                        = (known after apply)
+      + storage_account_type              = "Standard_LRS"
+      + tags                              = {
+          + "Project" = "Udacity-deployment-project"
+        }
+      + tier                              = (known after apply)
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[0] must be replaced
+-/+ resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      ~ id                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1" -> (known after apply)
+      ~ managed_disk_id           = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1" -> (known after apply) # forces replacement
+        # (5 unchanged attributes hidden)
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[1] will be created
+  + resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      + caching                   = "ReadWrite"
+      + create_option             = "Attach"
+      + id                        = (known after apply)
+      + lun                       = 10
+      + managed_disk_id           = (known after apply)
+      + virtual_machine_id        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1"
+      + write_accelerator_enabled = false
+    }
+
+Plan: 4 to add, 0 to change, 2 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...nes/Udacity-vm-0/dataDisks/Udacity-md1, 00m10s elapsed]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destruction complete after 10s
+azurerm_managed_disk.md1[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1]
+azurerm_managed_disk.md1[1]: Creating...
+azurerm_managed_disk.md1[1]: Creation complete after 4s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-1]
+azurerm_managed_disk.md1[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...rs/Microsoft.Compute/disks/Udacity-md1, 00m10s elapsed]
+azurerm_managed_disk.md1[0]: Destruction complete after 11s
+azurerm_managed_disk.md1[0]: Creating...
+azurerm_managed_disk.md1[0]: Creation complete after 3s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-0]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creating...
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Creating...
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Creation complete after 6s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1/dataDisks/Udacity-md1-1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Still creating... [00m10s elapsed]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Creation complete after 11s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1-0]
+
+Apply complete! Resources: 4 added, 0 changed, 2 destroyed.
+anveshbharadwaj@Mac cloud % terraform destroy
+var.location
+  The Azure Region in which all resources in this example should be created.
+
+  Enter a value: eastus
+
+var.prefix
+  The prefix which should be used for all resources in this example
+
+  Enter a value: Udacity
+
+data.azurerm_image.packer-image: Reading...
+azurerm_availability_set.availability_set: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/Udacity-aset]
+azurerm_public_ip.public_ip: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
+azurerm_managed_disk.md1[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-0]
+azurerm_virtual_network.main: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network]
+azurerm_managed_disk.md1[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-1]
+azurerm_network_security_group.project_NSG: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG]
+azurerm_subnet.internal: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+data.azurerm_image.packer-image: Read complete after 1s [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/images/AnveshprojectImage]
+azurerm_lb.load_balancer: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb]
+azurerm_subnet_network_security_group_association.assn: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_network_interface.main[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1]
+azurerm_network_interface.main[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0]
+azurerm_lb_backend_address_pool.bknd_pool: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_linux_virtual_machine.main[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0]
+azurerm_linux_virtual_machine.main[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1-0]
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Refreshing state... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1/dataDisks/Udacity-md1-1]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following
+symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # azurerm_availability_set.availability_set will be destroyed
+  - resource "azurerm_availability_set" "availability_set" {
+      - id                           = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/Udacity-aset" -> null
+      - location                     = "eastus" -> null
+      - managed                      = true -> null
+      - name                         = "Udacity-aset" -> null
+      - platform_fault_domain_count  = 3 -> null
+      - platform_update_domain_count = 5 -> null
+      - resource_group_name          = "AzureDevops" -> null
+      - tags                         = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+    }
+
+  # azurerm_lb.load_balancer will be destroyed
+  - resource "azurerm_lb" "load_balancer" {
+      - id                   = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb" -> null
+      - location             = "eastus" -> null
+      - name                 = "Udacity-lb" -> null
+      - private_ip_addresses = [] -> null
+      - resource_group_name  = "AzureDevops" -> null
+      - sku                  = "Standard" -> null
+      - sku_tier             = "Regional" -> null
+      - tags                 = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - frontend_ip_configuration {
+          - id                                                 = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/frontendIPConfigurations/primary" -> null
+          - inbound_nat_rules                                  = [] -> null
+          - load_balancer_rules                                = [] -> null
+          - name                                               = "primary" -> null
+          - outbound_rules                                     = [] -> null
+          - private_ip_address_allocation                      = "Dynamic" -> null
+          - public_ip_address_id                               = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB" -> null
+          - zones                                              = [] -> null
+            # (5 unchanged attributes hidden)
+        }
+    }
+
+  # azurerm_lb_backend_address_pool.bknd_pool will be destroyed
+  - resource "azurerm_lb_backend_address_pool" "bknd_pool" {
+      - backend_ip_configurations = [
+          - "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1/ipConfigurations/internal",
+          - "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0/ipConfigurations/internal",
+        ] -> null
+      - id                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb" -> null
+      - inbound_nat_rules         = [] -> null
+      - load_balancing_rules      = [] -> null
+      - loadbalancer_id           = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb" -> null
+      - name                      = "Udacity-bknd-address-pool-lb" -> null
+      - outbound_rules            = [] -> null
+        # (2 unchanged attributes hidden)
+    }
+
+  # azurerm_linux_virtual_machine.main[0] will be destroyed
+  - resource "azurerm_linux_virtual_machine" "main" {
+      - admin_password                                         = (sensitive value) -> null
+      - admin_username                                         = "Anvesh" -> null
+      - allow_extension_operations                             = true -> null
+      - bypass_platform_safety_checks_on_user_schedule_enabled = false -> null
+      - computer_name                                          = "Udacity-vm-0" -> null
+      - disable_password_authentication                        = false -> null
+      - encryption_at_host_enabled                             = false -> null
+      - extensions_time_budget                                 = "PT1H30M" -> null
+      - id                                                     = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0" -> null
+      - location                                               = "eastus" -> null
+      - max_bid_price                                          = -1 -> null
+      - name                                                   = "Udacity-vm-0" -> null
+      - network_interface_ids                                  = [
+          - "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0",
+        ] -> null
+      - patch_assessment_mode                                  = "ImageDefault" -> null
+      - patch_mode                                             = "ImageDefault" -> null
+      - platform_fault_domain                                  = -1 -> null
+      - priority                                               = "Regular" -> null
+      - private_ip_address                                     = "10.0.2.4" -> null
+      - private_ip_addresses                                   = [
+          - "10.0.2.4",
+        ] -> null
+      - provision_vm_agent                                     = true -> null
+      - public_ip_addresses                                    = [] -> null
+      - resource_group_name                                    = "AzureDevops" -> null
+      - secure_boot_enabled                                    = false -> null
+      - size                                                   = "Standard_D2s_v3" -> null
+      - source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage" -> null
+      - tags                                                   = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+      - virtual_machine_id                                     = "a24e087c-51bc-4ba6-9c00-86541a02ab78" -> null
+      - vm_agent_platform_updates_enabled                      = false -> null
+      - vtpm_enabled                                           = false -> null
+        # (14 unchanged attributes hidden)
+
+      - os_disk {
+          - caching                          = "ReadWrite" -> null
+          - disk_size_gb                     = 30 -> null
+          - id                               = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-vm-0_disk1_e0f0415076a3474d802d62d28040e295" -> null
+          - name                             = "Udacity-vm-0_disk1_e0f0415076a3474d802d62d28040e295" -> null
+          - storage_account_type             = "Standard_LRS" -> null
+          - write_accelerator_enabled        = false -> null
+            # (3 unchanged attributes hidden)
+        }
+    }
+
+  # azurerm_linux_virtual_machine.main[1] will be destroyed
+  - resource "azurerm_linux_virtual_machine" "main" {
+      - admin_password                                         = (sensitive value) -> null
+      - admin_username                                         = "Anvesh" -> null
+      - allow_extension_operations                             = true -> null
+      - bypass_platform_safety_checks_on_user_schedule_enabled = false -> null
+      - computer_name                                          = "Udacity-vm-1" -> null
+      - disable_password_authentication                        = false -> null
+      - encryption_at_host_enabled                             = false -> null
+      - extensions_time_budget                                 = "PT1H30M" -> null
+      - id                                                     = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1" -> null
+      - location                                               = "eastus" -> null
+      - max_bid_price                                          = -1 -> null
+      - name                                                   = "Udacity-vm-1" -> null
+      - network_interface_ids                                  = [
+          - "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1",
+        ] -> null
+      - patch_assessment_mode                                  = "ImageDefault" -> null
+      - patch_mode                                             = "ImageDefault" -> null
+      - platform_fault_domain                                  = -1 -> null
+      - priority                                               = "Regular" -> null
+      - private_ip_address                                     = "10.0.2.5" -> null
+      - private_ip_addresses                                   = [
+          - "10.0.2.5",
+        ] -> null
+      - provision_vm_agent                                     = true -> null
+      - public_ip_addresses                                    = [] -> null
+      - resource_group_name                                    = "AzureDevops" -> null
+      - secure_boot_enabled                                    = false -> null
+      - size                                                   = "Standard_D2s_v3" -> null
+      - source_image_id                                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/Azuredevops/providers/Microsoft.Compute/images/AnveshprojectImage" -> null
+      - tags                                                   = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+      - virtual_machine_id                                     = "9cb572cb-68dc-451a-99fe-05b780f4046a" -> null
+      - vm_agent_platform_updates_enabled                      = false -> null
+      - vtpm_enabled                                           = false -> null
+        # (14 unchanged attributes hidden)
+
+      - os_disk {
+          - caching                          = "ReadWrite" -> null
+          - disk_size_gb                     = 30 -> null
+          - id                               = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-vm-1_disk1_5a16a73829414384871bc13cd06e295f" -> null
+          - name                             = "Udacity-vm-1_disk1_5a16a73829414384871bc13cd06e295f" -> null
+          - storage_account_type             = "Standard_LRS" -> null
+          - write_accelerator_enabled        = false -> null
+            # (3 unchanged attributes hidden)
+        }
+    }
+
+  # azurerm_managed_disk.md1[0] will be destroyed
+  - resource "azurerm_managed_disk" "md1" {
+      - create_option                     = "Empty" -> null
+      - disk_iops_read_only               = 0 -> null
+      - disk_iops_read_write              = 500 -> null
+      - disk_mbps_read_only               = 0 -> null
+      - disk_mbps_read_write              = 60 -> null
+      - disk_size_gb                      = 1 -> null
+      - id                                = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-0" -> null
+      - location                          = "eastus" -> null
+      - max_shares                        = 0 -> null
+      - name                              = "Udacity-md1-0" -> null
+      - network_access_policy             = "AllowAll" -> null
+      - on_demand_bursting_enabled        = false -> null
+      - optimized_frequent_attach_enabled = false -> null
+      - performance_plus_enabled          = false -> null
+      - public_network_access_enabled     = true -> null
+      - resource_group_name               = "AzureDevops" -> null
+      - storage_account_type              = "Standard_LRS" -> null
+      - tags                              = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+      - trusted_launch_enabled            = false -> null
+      - upload_size_bytes                 = 0 -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # azurerm_managed_disk.md1[1] will be destroyed
+  - resource "azurerm_managed_disk" "md1" {
+      - create_option                     = "Empty" -> null
+      - disk_iops_read_only               = 0 -> null
+      - disk_iops_read_write              = 500 -> null
+      - disk_mbps_read_only               = 0 -> null
+      - disk_mbps_read_write              = 60 -> null
+      - disk_size_gb                      = 1 -> null
+      - id                                = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-1" -> null
+      - location                          = "eastus" -> null
+      - max_shares                        = 0 -> null
+      - name                              = "Udacity-md1-1" -> null
+      - network_access_policy             = "AllowAll" -> null
+      - on_demand_bursting_enabled        = false -> null
+      - optimized_frequent_attach_enabled = false -> null
+      - performance_plus_enabled          = false -> null
+      - public_network_access_enabled     = true -> null
+      - resource_group_name               = "AzureDevops" -> null
+      - storage_account_type              = "Standard_LRS" -> null
+      - tags                              = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+      - trusted_launch_enabled            = false -> null
+      - upload_size_bytes                 = 0 -> null
+        # (14 unchanged attributes hidden)
+    }
+
+  # azurerm_network_interface.main[0] will be destroyed
+  - resource "azurerm_network_interface" "main" {
+      - accelerated_networking_enabled = false -> null
+      - applied_dns_servers            = [] -> null
+      - dns_servers                    = [] -> null
+      - id                             = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0" -> null
+      - internal_domain_name_suffix    = "sb4lrkdfujkuzg2urxhapehgxb.bx.internal.cloudapp.net" -> null
+      - ip_forwarding_enabled          = false -> null
+      - location                       = "eastus" -> null
+      - mac_address                    = "7C-ED-8D-21-54-70" -> null
+      - name                           = "Udacity-nic-0" -> null
+      - private_ip_address             = "10.0.2.4" -> null
+      - private_ip_addresses           = [
+          - "10.0.2.4",
+        ] -> null
+      - resource_group_name            = "AzureDevops" -> null
+      - tags                           = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+      - virtual_machine_id             = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0" -> null
+        # (4 unchanged attributes hidden)
+
+      - ip_configuration {
+          - name                                               = "internal" -> null
+          - primary                                            = true -> null
+          - private_ip_address                                 = "10.0.2.4" -> null
+          - private_ip_address_allocation                      = "Dynamic" -> null
+          - private_ip_address_version                         = "IPv4" -> null
+          - subnet_id                                          = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal" -> null
+            # (2 unchanged attributes hidden)
+        }
+    }
+
+  # azurerm_network_interface.main[1] will be destroyed
+  - resource "azurerm_network_interface" "main" {
+      - accelerated_networking_enabled = false -> null
+      - applied_dns_servers            = [] -> null
+      - dns_servers                    = [] -> null
+      - id                             = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1" -> null
+      - internal_domain_name_suffix    = "sb4lrkdfujkuzg2urxhapehgxb.bx.internal.cloudapp.net" -> null
+      - ip_forwarding_enabled          = false -> null
+      - location                       = "eastus" -> null
+      - mac_address                    = "7C-1E-52-45-F4-1B" -> null
+      - name                           = "Udacity-nic-1" -> null
+      - private_ip_address             = "10.0.2.5" -> null
+      - private_ip_addresses           = [
+          - "10.0.2.5",
+        ] -> null
+      - resource_group_name            = "AzureDevops" -> null
+      - tags                           = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+      - virtual_machine_id             = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1" -> null
+        # (4 unchanged attributes hidden)
+
+      - ip_configuration {
+          - name                                               = "internal" -> null
+          - primary                                            = true -> null
+          - private_ip_address                                 = "10.0.2.5" -> null
+          - private_ip_address_allocation                      = "Dynamic" -> null
+          - private_ip_address_version                         = "IPv4" -> null
+          - subnet_id                                          = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal" -> null
+            # (2 unchanged attributes hidden)
+        }
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[0] will be destroyed
+  - resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      - backend_address_pool_id = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb" -> null
+      - id                      = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb" -> null
+      - ip_configuration_name   = "internal" -> null
+      - network_interface_id    = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0" -> null
+    }
+
+  # azurerm_network_interface_backend_address_pool_association.addresspool_assn[1] will be destroyed
+  - resource "azurerm_network_interface_backend_address_pool_association" "addresspool_assn" {
+      - backend_address_pool_id = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb" -> null
+      - id                      = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb" -> null
+      - ip_configuration_name   = "internal" -> null
+      - network_interface_id    = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1" -> null
+    }
+
+  # azurerm_network_security_group.project_NSG will be destroyed
+  - resource "azurerm_network_security_group" "project_NSG" {
+      - id                  = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG" -> null
+      - location            = "eastus" -> null
+      - name                = "Udacity-NSG" -> null
+      - resource_group_name = "AzureDevops" -> null
+      - security_rule       = [
+          - {
+              - access                                     = "Allow"
+              - destination_address_prefix                 = "VirtualNetwork"
+              - destination_address_prefixes               = []
+              - destination_application_security_group_ids = []
+              - destination_port_range                     = "*"
+              - destination_port_ranges                    = []
+              - direction                                  = "Inbound"
+              - name                                       = "allow-subnet-traffic"
+              - priority                                   = 100
+              - protocol                                   = "*"
+              - source_address_prefix                      = "VirtualNetwork"
+              - source_address_prefixes                    = []
+              - source_application_security_group_ids      = []
+              - source_port_range                          = "*"
+              - source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+          - {
+              - access                                     = "Deny"
+              - destination_address_prefix                 = "VirtualNetwork"
+              - destination_address_prefixes               = []
+              - destination_application_security_group_ids = []
+              - destination_port_range                     = "*"
+              - destination_port_ranges                    = []
+              - direction                                  = "Inbound"
+              - name                                       = "deny-access-from-internet"
+              - priority                                   = 120
+              - protocol                                   = "*"
+              - source_address_prefix                      = "Internet"
+              - source_address_prefixes                    = []
+              - source_application_security_group_ids      = []
+              - source_port_range                          = "*"
+              - source_port_ranges                         = []
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - tags                = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+    }
+
+  # azurerm_public_ip.public_ip will be destroyed
+  - resource "azurerm_public_ip" "public_ip" {
+      - allocation_method       = "Static" -> null
+      - ddos_protection_mode    = "VirtualNetworkInherited" -> null
+      - id                      = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB" -> null
+      - idle_timeout_in_minutes = 4 -> null
+      - ip_address              = "172.190.140.233" -> null
+      - ip_tags                 = {} -> null
+      - ip_version              = "IPv4" -> null
+      - location                = "eastus" -> null
+      - name                    = "PublicIPForLB" -> null
+      - resource_group_name     = "AzureDevops" -> null
+      - sku                     = "Standard" -> null
+      - sku_tier                = "Regional" -> null
+      - tags                    = {} -> null
+      - zones                   = [] -> null
+        # (1 unchanged attribute hidden)
+    }
+
+  # azurerm_subnet.internal will be destroyed
+  - resource "azurerm_subnet" "internal" {
+      - address_prefixes                              = [
+          - "10.0.2.0/24",
+        ] -> null
+      - default_outbound_access_enabled               = true -> null
+      - id                                            = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal" -> null
+      - name                                          = "internal" -> null
+      - private_endpoint_network_policies             = "Disabled" -> null
+      - private_link_service_network_policies_enabled = true -> null
+      - resource_group_name                           = "AzureDevops" -> null
+      - service_endpoint_policy_ids                   = [] -> null
+      - service_endpoints                             = [] -> null
+      - virtual_network_name                          = "Udacity-network" -> null
+    }
+
+  # azurerm_subnet_network_security_group_association.assn will be destroyed
+  - resource "azurerm_subnet_network_security_group_association" "assn" {
+      - id                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal" -> null
+      - network_security_group_id = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG" -> null
+      - subnet_id                 = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal" -> null
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[0] will be destroyed
+  - resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      - caching                   = "ReadWrite" -> null
+      - create_option             = "Attach" -> null
+      - id                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1-0" -> null
+      - lun                       = 10 -> null
+      - managed_disk_id           = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-0" -> null
+      - virtual_machine_id        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0" -> null
+      - write_accelerator_enabled = false -> null
+    }
+
+  # azurerm_virtual_machine_data_disk_attachment.md_attach[1] will be destroyed
+  - resource "azurerm_virtual_machine_data_disk_attachment" "md_attach" {
+      - caching                   = "ReadWrite" -> null
+      - create_option             = "Attach" -> null
+      - id                        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1/dataDisks/Udacity-md1-1" -> null
+      - lun                       = 10 -> null
+      - managed_disk_id           = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-1" -> null
+      - virtual_machine_id        = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1" -> null
+      - write_accelerator_enabled = false -> null
+    }
+
+  # azurerm_virtual_network.main will be destroyed
+  - resource "azurerm_virtual_network" "main" {
+      - address_space                  = [
+          - "10.0.0.0/16",
+        ] -> null
+      - dns_servers                    = [] -> null
+      - flow_timeout_in_minutes        = 0 -> null
+      - guid                           = "a8b87c90-a265-4c55-9b94-8dce0790e6b9" -> null
+      - id                             = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network" -> null
+      - location                       = "eastus" -> null
+      - name                           = "Udacity-network" -> null
+      - private_endpoint_vnet_policies = "Disabled" -> null
+      - resource_group_name            = "AzureDevops" -> null
+      - subnet                         = [
+          - {
+              - address_prefixes                              = [
+                  - "10.0.2.0/24",
+                ]
+              - default_outbound_access_enabled               = true
+              - delegation                                    = []
+              - id                                            = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal"
+              - name                                          = "internal"
+              - private_endpoint_network_policies             = "Disabled"
+              - private_link_service_network_policies_enabled = true
+              - security_group                                = "/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG"
+              - service_endpoint_policy_ids                   = []
+              - service_endpoints                             = []
+                # (1 unchanged attribute hidden)
+            },
+        ] -> null
+      - tags                           = {
+          - "Project" = "Udacity-deployment-project"
+        } -> null
+        # (2 unchanged attributes hidden)
+    }
+
+Plan: 0 to add, 0 to change, 18 to destroy.
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_subnet_network_security_group_association.assn: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1/ipConfigurations/internal|/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1/dataDisks/Udacity-md1-1]
+azurerm_availability_set.availability_set: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/availabilitySets/Udacity-aset]
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0/dataDisks/Udacity-md1-0]
+azurerm_availability_set.availability_set: Destruction complete after 1s
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[0]: Destruction complete after 3s
+azurerm_network_interface_backend_address_pool_association.addresspool_assn[1]: Destruction complete after 5s
+azurerm_lb_backend_address_pool.bknd_pool: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb/backendAddressPools/Udacity-bknd-address-pool-lb]
+azurerm_subnet_network_security_group_association.assn: Destruction complete after 6s
+azurerm_network_security_group.project_NSG: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkSecurityGroups/Udacity-NSG]
+azurerm_virtual_machine_data_disk_attachment.md_attach[1]: Destruction complete after 8s
+azurerm_virtual_machine_data_disk_attachment.md_attach[0]: Destruction complete after 10s
+azurerm_managed_disk.md1[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-0]
+azurerm_managed_disk.md1[1]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/disks/Udacity-md1-1]
+azurerm_linux_virtual_machine.main[1]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-1]
+azurerm_linux_virtual_machine.main[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Compute/virtualMachines/Udacity-vm-0]
+azurerm_lb_backend_address_pool.bknd_pool: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...ressPools/Udacity-bknd-address-pool-lb, 00m10s elapsed]
+azurerm_network_security_group.project_NSG: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...work/networkSecurityGroups/Udacity-NSG, 00m10s elapsed]
+azurerm_lb_backend_address_pool.bknd_pool: Destruction complete after 11s
+azurerm_lb.load_balancer: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/loadBalancers/Udacity-lb]
+azurerm_network_security_group.project_NSG: Destruction complete after 10s
+azurerm_managed_disk.md1[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-.../Microsoft.Compute/disks/Udacity-md1-0, 00m10s elapsed]
+azurerm_managed_disk.md1[1]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-.../Microsoft.Compute/disks/Udacity-md1-1, 00m10s elapsed]
+azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...t.Compute/virtualMachines/Udacity-vm-0, 00m10s elapsed]
+azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...t.Compute/virtualMachines/Udacity-vm-1, 00m10s elapsed]
+azurerm_managed_disk.md1[1]: Destruction complete after 11s
+azurerm_managed_disk.md1[0]: Destruction complete after 11s
+azurerm_lb.load_balancer: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...osoft.Network/loadBalancers/Udacity-lb, 00m10s elapsed]
+azurerm_lb.load_balancer: Destruction complete after 11s
+azurerm_public_ip.public_ip: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/publicIPAddresses/PublicIPForLB]
+azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...t.Compute/virtualMachines/Udacity-vm-1, 00m20s elapsed]
+azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...t.Compute/virtualMachines/Udacity-vm-0, 00m20s elapsed]
+azurerm_public_ip.public_ip: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...etwork/publicIPAddresses/PublicIPForLB, 00m10s elapsed]
+azurerm_public_ip.public_ip: Destruction complete after 11s
+azurerm_linux_virtual_machine.main[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...t.Compute/virtualMachines/Udacity-vm-0, 00m30s elapsed]
+azurerm_linux_virtual_machine.main[1]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...t.Compute/virtualMachines/Udacity-vm-1, 00m30s elapsed]
+azurerm_linux_virtual_machine.main[0]: Destruction complete after 32s
+azurerm_linux_virtual_machine.main[1]: Destruction complete after 33s
+azurerm_network_interface.main[1]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-1]
+azurerm_network_interface.main[0]: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/networkInterfaces/Udacity-nic-0]
+azurerm_network_interface.main[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...etwork/networkInterfaces/Udacity-nic-0, 00m10s elapsed]
+azurerm_network_interface.main[1]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...etwork/networkInterfaces/Udacity-nic-1, 00m10s elapsed]
+azurerm_network_interface.main[1]: Destruction complete after 11s
+azurerm_network_interface.main[0]: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...etwork/networkInterfaces/Udacity-nic-0, 00m20s elapsed]
+azurerm_network_interface.main[0]: Destruction complete after 22s
+azurerm_subnet.internal: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network/subnets/internal]
+azurerm_subnet.internal: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...works/Udacity-network/subnets/internal, 00m10s elapsed]
+azurerm_subnet.internal: Destruction complete after 11s
+azurerm_virtual_network.main: Destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-645eefac51b6/resourceGroups/AzureDevops/providers/Microsoft.Network/virtualNetworks/Udacity-network]
+azurerm_virtual_network.main: Still destroying... [id=/subscriptions/83316a40-5757-40fd-8e78-...etwork/virtualNetworks/Udacity-network, 00m10s elapsed]
+azurerm_virtual_network.main: Destruction complete after 11s
+
+Destroy complete! Resources: 18 destroyed.
+anveshbharadwaj@Mac cloud % 
